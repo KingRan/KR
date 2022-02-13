@@ -127,35 +127,9 @@ except:
 #######################################################################
 
 
-if "plant_cookie" in os.environ:
-    if len (os.environ["plant_cookie"]) == 1:
-        is_ck = int(os.environ["plant_cookie"])
-        cookie1 = os.environ["JD_COOKIE"].split('&')
-        cookie = cookie1[is_ck-1]
-        printT ("已获取并使用Env环境cookie")
-    elif len (os.environ["plant_cookie"]) > 1:
-        cookies1 = []
-        cookies1 = os.environ["JD_COOKIE"]
-        cookies1 = cookies1.split ('&')
-        is_ck = os.environ["plant_cookie"].split('&')
-        for i in is_ck:
-            cookies.append(cookies1[int(i)-1])
-        printT ("已获取并使用Env环境plant_cookies")
-else:
-    if cookie == '':
-        printT ("变量plant_cookie未填写")
-        exit (0)
-
-if "charge_targe_id" in os.environ:
-    if len (os.environ["charge_targe_id"]) > 8:
-        charge_targe_ids = os.environ["charge_targe_id"]
-        charge_targe_ids = charge_targe_ids.split ('&')
-    else:
-        charge_targe_id = os.environ["charge_targe_id"]
-        printT (f"已获取并使用Env环境 charge_targe_id={charge_targe_id}")
-else:
-    printT("变量charge_targe_id未填写，无法充能")
-
+cookies1 = []
+cookies1 = os.environ["JD_COOKIE"]
+cookies = cookies1.split ('&')
 
 
 def userAgent():
@@ -272,7 +246,7 @@ def get_ck(token,sid_ck,account):
         result = response.json ()
         # print(result)
         access_token = result['token']
-        print(access_token)
+        #print(access_token)
         return access_token
     except Exception as e:
         msg("账号【{0}】获取ck失败，cookie过期".format(account))
@@ -299,7 +273,7 @@ def get_Authorization(access_token,account):
         # print(data)
         response = requests.post (url=url, verify=False, headers=headers,data=data)
         result = response.json ()
-        print(result)
+        #print(result)
         access_token = result['access_token']
         access_token = r"Bearer " + access_token
         # print(access_token)
@@ -332,9 +306,12 @@ def get_planted_info(cookies,sid,account):
         try:
             name = result['plant'][f'{i+1}']['data']['name']
             planted_id = result['plant'][f'{i+1}']['data']['id']
-            print(f"账号{account}所种植的",f"【{name}】","充能ID为:",planted_id)
+            print(f"账号{account}所种植的",f"【{name}】","充能ID1为:",planted_id)
             name_list.append(name)
             planted_id_list.append(planted_id)
+            global charge_targe_id
+            charge_targe_id=str(planted_id)
+            break
         except Exception as e:
             pass
 
@@ -566,12 +543,7 @@ def start():
                     do_task2 (cookie, taskName, taskId, i, sid,account)
                 charge(charge_targe_id,cookie,sid, account)
         elif cookies != '':
-            for cookie, charge_targe_id in zip (cookies, charge_targe_ids):
-                account = setName (cookie)
-                access_token = get_ck (cookie, sid_ck, account)
-                cookie = get_Authorization (access_token, account)
-                get_planted_info (cookie, sid,account)
-            for cookie,charge_targe_id in zip(cookies,charge_targe_ids):
+            for cookie in cookies:
                 try:
                     account = setName (cookie)
                     access_token = get_ck (cookie, sid_ck,account)
