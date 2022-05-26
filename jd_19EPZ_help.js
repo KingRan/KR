@@ -29,57 +29,75 @@ if ($.isNode()) {
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
 
-$.inviteId  = [];
-$.inviteId.push(inviteId1);
+$.inviteId = [];
+if (inviteId1 !== "") {
+    $.inviteId.push(inviteId1);
+}
+
+console.log(`可设置 PZ_LIST 增加支持添加多个助力码，方便操作，目前该值为 ${process.env.PZ_LIST}`)
+if (process.env.PZ_LIST) {
+    let pz_list = process.env.PZ_LIST.split(';');
+    pz_list.forEach(function (pz) {
+        if (pz !== "") {
+            $.inviteId.push(pz);
+        }
+    })
+}
+console.log(`合并后助力码数目为 ${$.inviteId.length}，内容为 ${JSON.stringify($.inviteId)}`)
+
 !(async () => {
-  if (!cookiesArr[0]) {
-    $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
-    return;
-  }
-  console.log(`\n变量：export PZ="助力码"`);
-  $.inviteIdCodesArr = {}
-  for (let i = 0; i < cookiesArr.length && true; i++) {
-    if (cookiesArr[i]) {
-      cookie = cookiesArr[i];
-      $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
-      $.index = i + 1;
-      await getUA()
+    if (!cookiesArr[0]) {
+        $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
+        return;
     }
-  }
-  for (let m = 0; m < cookiesArr.length; m++) {
-    cookie = cookiesArr[m];
-    $.index = m + 1;
-    $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
-    $.canHelp = true;
-    $.inviteId  = [...new Set($.inviteId )];
-    $.UA = $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1")
-    
-    if (cookiesArr && cookiesArr.length >= 2) {
-      console.log(`\n\n自己账号内部互助`);
-      for (let j = 0; j < $.inviteId .length && $.canHelp; j++) {
-        console.log(`账号 ${$.index} ${$.UserName} 开始给 ${$.inviteId [j]} 进行助力`)
-        $.max = false;
-        try {
-          await get_secretp()
-          await travel_help($.inviteId [j])
-    
-        }catch(e){
-          $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
+    console.log(`\n变量：export PZ="助力码"`);
+    $.inviteIdCodesArr = {}
+    for (let i = 0; i < cookiesArr.length && true; i++) {
+        if (cookiesArr[i]) {
+            cookie = cookiesArr[i];
+            $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
+            $.index = i + 1;
+            await getUA()
         }
-        await $.wait(2000)
-	      if ($.max) {
-          $.inviteId .splice(j, 1)
-          j--
-          continue
+    }
+    console.log("\n反着互助，避免出现过多提示：不能为本队队员助力哦")
+    for (let m = cookiesArr.length - 1; m >= 0; m--) {
+        cookie = cookiesArr[m];
+        $.index = m + 1;
+        $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
+        $.canHelp = true;
+        $.inviteId = [...new Set($.inviteId)];
+        $.UA = $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1")
+
+        if (cookiesArr && cookiesArr.length >= 2) {
+            console.log(`\n\n----------- 自己账号内部互助 账号 ${$.index}-----------`);
+            let helpIndex = 0;
+            for (let j = 0; j < $.inviteId.length && $.canHelp; j++) {
+                helpIndex++;
+                console.log(`\n账号 ${$.index} ${$.UserName} 开始给 ${helpIndex}: ${$.inviteId [j]} 进行助力`)
+                $.max = false;
+                try {
+                    await get_secretp()
+                    await travel_help($.inviteId [j])
+
+                } catch (e) {
+                    $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
+                }
+                await $.wait(2000)
+                if ($.max) {
+                    console.log(`第${j + 1}个互助码已满，从列表中剔除 ${$.inviteId [j]}`)
+                    $.inviteId.splice(j, 1)
+                    j--
+                    continue
+                }
+
+            }
+        }
+        if ($.inviteId.length < 1) {
+            break
         }
 
-      }
     }
-    if($.inviteId .length<1){
-      break
-    }
-
-  }
 
 })()
   .catch((e) => {
@@ -92,7 +110,7 @@ $.inviteId.push(inviteId1);
 function get_secretp() {
     let body = {};
     return new Promise((resolve) => {
-        $.post(taskPostUrl("promote_getHomeData", body), async(err, resp, data) => {
+        $.post(taskPostUrl("promote_getHomeData", body), async (err, resp, data) => {
             //console.log(data)
             try {
                 if (err) {
@@ -106,7 +124,7 @@ function get_secretp() {
                                 secretp = data.data.result.homeMainInfo.secretp
                                 console.log(secretp)
                           }
-                        } else 
+                        } else
                         if (data.code != 0) {
                             //console.log(`\n\nsecretp失败:${JSON.stringify(data)}\n`)
                         }
@@ -135,10 +153,10 @@ function travel_gethelp(){
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
-            
+
             if (data.code === 0) {
               console.log(`\n\n 成功获取组队码\n`)
-              
+
 					console.log(data.data.result.inviteId)
           $.inviteId.push(data.data.result.inviteId);
             } else {
@@ -155,41 +173,49 @@ function travel_gethelp(){
 	})
 }
 
-function travel_help(inviteId){
-	//let body={"taskId":taskId,"taskToken":taskToken,"actionType":1,"ss":{"extraData":{"log":"","sceneid":"ZNSZLh5"},"secretp":secretp,"random":randomString(6)}};
-  let body={"confirmFlag":"1","inviteId":inviteId,"ss":{"extraData":{"log":"","sceneid":"RAhomePageh5"},"secretp":secretp,"random":randomString(8)}};
+function travel_help(inviteId) {
+    //let body={"taskId":taskId,"taskToken":taskToken,"actionType":1,"ss":{"extraData":{"log":"","sceneid":"ZNSZLh5"},"secretp":secretp,"random":randomString(6)}};
+    let body = {
+        "confirmFlag": "1",
+        "inviteId": inviteId,
+        "ss": {"extraData": {"log": "", "sceneid": "RAhomePageh5"}, "secretp": secretp, "random": randomString(8)}
+    };
 
-	return new Promise((resolve) => {
-		$.post(taskPostUrl("promote_pk_collectPkExpandScore",body), async (err, resp, data) => {
-      try {
-        if (err) {
-          console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API请求失败，请检查网路重试`)
-        } else {
-          if (safeGet(data)) {
-            data = JSON.parse(data);
-            if (data && data.data ) {
-              // status ,0:助力成功，1:不能重复助力，3:助力次数耗尽，8:不能为自己助力
-              console.log(`助力结果：${data.data.bizMsg}`)
-              if (data.data.biz_code === 103) $.max = true;
-              if (data.data.biz_code === 6) $.canHelp = false;
-            } else {
-              console.log(`\n\n 失败:${JSON.stringify(data)}\n`)
+    return new Promise((resolve) => {
+        $.post(taskPostUrl("promote_pk_collectPkExpandScore", body), async (err, resp, data) => {
+            try {
+                if (err) {
+                    console.log(`${JSON.stringify(err)}`)
+                    console.log(`${$.name} API请求失败，请检查网路重试`)
+                } else {
+                    if (safeGet(data)) {
+                        data = JSON.parse(data);
+                        if (data && data.data) {
+                            // status ,0:助力成功，1:不能重复助力，3:助力次数耗尽，8:不能为自己助力
+                            // "bizCode":-3,"bizMsg":"不能为自己助力哦|快去瓜分19亿红包吧
+                            // "bizCode":-19,"bizMsg":"TA已经获得足够的助力了|不需要助力啦~"
+                            // "bizCode":0,"bizMsg":"success"
+                            // "bizCode":-13,"bizMsg":"不能为本队队员助力哦|快去瓜分19亿红包吧~"
+                            console.log(`助力结果：${data.data.bizCode} ${data.data.bizMsg}`)
+                            if ([103, -19].includes(data.data.bizCode)) $.max = true;
+                            if ([6].includes(data.data.bizCode)) $.canHelp = false;
+                        } else {
+                            console.log(`\n\n 失败:${JSON.stringify(data)}\n`)
+                        }
+                    }
+                }
+            } catch (e) {
+                $.logErr(e, resp)
+            } finally {
+                resolve(data);
             }
-          }
-        }
-      } catch (e) {
-        $.logErr(e, resp)
-      } finally {
-        resolve(data);
-      }
+        })
     })
-	})
 }
 
 function qryViewkitCallbackResult(taskToken){
 	let body={"dataSource":"newshortAward","method":"getTaskAward","reqParams":`{\"taskToken\":"${taskToken}"}`,"sdkVersion":"1.0.0","clientLanguage":"zh","onlyTimeId":new Date().getTime(),"riskParam":{"platform":"3","orgType":"2","openId":"-1","pageClickKey":"Babel_VKCoupon","eid":"","fp":"-1","shshshfp":"","shshshfpa":"","shshshfpb":"","childActivityUrl":"","userArea":"-1","client":"","clientVersion":"","uuid":"","osVersion":"","brand":"","model":"","networkType":"","jda":"-1"}};
-	
+
 	return new Promise((resolve) => {
 		$.post(taskPostUrl2("qryViewkitCallbackResult",body), async (err, resp, data) => {
       try {
