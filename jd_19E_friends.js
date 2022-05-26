@@ -37,6 +37,15 @@ let groups = []
     }
     console.log('\n仅助力+组队+升级，快速跑完\n')
     await getUA()
+
+    let maxMemberPerTeam = 30;
+    let teamCount = (cookiesArr.length + maxMemberPerTeam - 1) / maxMemberPerTeam;
+    console.log(`\n 总计账号 ${cookiesArr.length}个，每组${maxMemberPerTeam}个，共${teamCount}组\n`)
+
+    let isTeamLeader = function (index) {
+        return index <= teamCount;
+    }
+
     for (let i = 0; i < cookiesArr.length; i++) {
         if (cookiesArr[i]) {
             cookie = cookiesArr[i];
@@ -54,8 +63,8 @@ let groups = []
 			}
             await promote_collectAtuoScore() //定时领取
             let res
-			//此处修改组队人数 默认前7组队
-            if (i <= 7 ){
+            // 根据前面计算出的组数，将前teamCount的玩家作为队长
+            if (isTeamLeader($.index)) {
                res = await promote_pk_getHomeData()
                if (res.data.result.groupInfo.memberList) {
                  let memberCount = res.data.result.groupInfo.memberList.length
@@ -115,7 +124,8 @@ let groups = []
                  res = await promote_pk_getHomeData()
                  if (res.data.result.groupInfo.memberList) {
                    let memberCount = res.data.result.groupInfo.memberList.length
-                   if (memberCount === 1) {
+                    // 如果该成员不属于设定的队长，且未加入其他队伍，则尝试加入队伍
+                    if (!isTeamLeader($.index) && memberCount === 1) {
                      for (let group of groups) {
                        console.log('\n开始加入队伍：', group.groupJoinInviteId)
                        res = await collectFriendRecordColor(group.mpin)
