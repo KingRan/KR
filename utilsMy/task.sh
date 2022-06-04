@@ -65,7 +65,7 @@
 3 8,17 * * * /usr/local/bin/node /home/data/KR/jd_sign_graphics.js
 38 9,22 * * * /usr/local/bin/node /home/data/KR/jd_sign.js
 25 4,21 * * * /usr/local/bin/node /home/data/KR/jd_sgmh.js
-25 0,23 * * * /usr/local/bin/node /home/data/KR/jd_price.js
+25 0,23 * * * /usr/local/bin/node /home/data/KR/jd_price.js >> /home/data/logs/jd_script_node/jd_price.log 2>&1
 20 2-21/2 * * * /usr/local/bin/node /home/data/KR/jd_plantBean.js
 5 2,18 * * * /usr/local/bin/node /home/data/KR/jd_plantBean_help.js
 10 6-18/6 * * * /usr/local/bin/node /home/data/KR/jd_pet.js
