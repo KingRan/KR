@@ -27,6 +27,8 @@ export NOTIFY_AUTHOR_BLANK="true"
 export NOTIFY_AUTOCHECKCK=“true”
  */
 //详细说明参考 https://github.com/ccwav/QLScript2.
+require('../faker3/utilsMy/__env').setEnv()
+const { COOKIESNAME } = require('../faker3/utilsMy/const')
 const querystring = require('querystring');
 const exec = require('child_process').exec;
 const $ = new Env();
@@ -2421,7 +2423,10 @@ function pushPlusNotify(text, desp) {
         if (PUSH_PLUS_TOKEN) {
 
             //desp = `<font size="3">${desp}</font>`;
-
+            Object.entries(COOKIESNAME).forEach(([cookieKey, cookieValue]) => {
+                desp = desp.replace(new RegExp(cookieKey,'g'), cookieValue);
+                text = text.replace(new RegExp(cookieKey,'g'), cookieValue);
+            })
             desp = desp.replace(/[\n\r]/g, '<br>'); // 默认为html, 不支持plaintext
             const body = {
                 token: `${PUSH_PLUS_TOKEN}`,
