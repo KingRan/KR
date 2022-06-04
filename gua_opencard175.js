@@ -43,8 +43,8 @@ process.env.guaopencard175s="true"
 let guaopencard_addSku = 'true' // 加购
 let guaopencard = 'true' // 执行
 let guaopenwait = 100 // 等待（秒）
-let guaopencard_draw = 40 // 抽奖次数
-let assistNum = 30 // 助力上限次数
+let guaopencard_draw = 50 // 抽奖次数
+let assistNum = 50 // 助力上限次数
 
 const $ = new Env('无忧酒柜')
 
