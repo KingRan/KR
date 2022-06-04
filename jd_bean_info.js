@@ -30,6 +30,7 @@ if ($.isNode()) {
     return;
   }
   console.log(`\n正在查询今天所有账号的京豆收入......`);
+  cookiesArr.length = 10
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
@@ -63,7 +64,7 @@ if ($.isNode()) {
   allMessage += `\n今日全部账号收入：${allBean}个京豆 🐶\n`
   console.log(`${allMessage}`)
   if ($.isNode() && allMessage) {
-    //await notify.sendNotify(`${$.name}`, `${allMessage}`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` })
+    await notify.sendNotify(`${$.name}`, `${allMessage}`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` })
   }
 })()
     .catch((e) => {
