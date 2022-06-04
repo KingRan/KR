@@ -21,10 +21,13 @@
 
 # 极速版
 #5 0 * * * /usr/local/bin/node /home/data/faker3/jd_joy_park_task.js
+20 0,19 * * * /usr/local/bin/node /home/data/KR/jd_js_sign.js
+0 7 * * * /usr/local/bin/node /home/data/KR/jd_zjb.js
 
 
 # 京喜
-1 0,20 * * * /usr/local/bin/node /home/data/faker3/jx_sign.js
+1 0,1,20 * * * /usr/local/bin/node /home/data/KR/jx_sign.js
+
 13 6-23/2 * * * /usr/local/bin/node /home/data/faker3/jd_my_jxmc.js
 5 0,10 * * * /usr/local/bin/node /home/data/faker3/jd_my_jxmc_help.js
 5 3,12,18,21 * * * /usr/local/bin/node /home/data/faker3/jd_my_cfd.js
@@ -69,7 +72,6 @@
 10 6-18/6 * * * /usr/local/bin/node /home/data/faker3/jd_my_pet.js
 0 * * * * /usr/local/bin/node /home/data/faker3/jd_my_redrain.js
 30 21,22 * * * /usr/local/bin/node /home/data/faker3/jd_my_redrain_half.js
-0 7 * * * /usr/local/bin/node /home/data/faker3/jd_my_zjb.js
 40 0,21 * * * /usr/local/bin/node /home/data/faker3/jd_my_jdzz.js
 50 12-14 * * * /usr/local/bin/node /home/data/faker3/jd_my_live.js
 30 0-23/3 * * * /usr/local/bin/node /home/data/faker3/jd_my_wsdlb.js

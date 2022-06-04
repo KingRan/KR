@@ -13,6 +13,7 @@ const envList = {
   BEANCHANGE_PERSENT: 30,
   exjxbeans: true,
   BEANCHANGE_DISABLELIST: '东东农场&京喜工厂&东东萌宠&京东工厂&喜豆查询&金融养猪',
+  InviterPin: '26SeXThtMCG6aP+jxigijw==',
   CFD_LOOP_LIMIT: 1,
   CFD_LOOP_SLEEPTIME: 1000*30,
   JOY_COIN_MAXIMIZE: '1',
