@@ -799,14 +799,7 @@ function taskGetUrl(function_id, body) {
 }
 
 function invite2() {
-  let inviterIdArr = [
-    "9vOskAagcMJ4EOWXPQSS9A==",
-    "9irilvenEupYF488TUrl19DLuKQ9zWnXYHf9anC0ujw=",
-    "0Iut/X6Fx833sGPARnxK0TEJAHhGl+YhaIQMI1735mE=",
-    "EX5edGJ14b70ZUglRq7IMmT3GewOP9IL/BN3k2dfrjw=",
-    "ty6iFSNMeLZfu/F1QvwzAnifpKIunqsG7am3vAp9rkc="
-  ]
-  let inviterId = inviterIdArr[Math.floor((Math.random() * inviterIdArr.length))]
+  let inviterId = '26SeXThtMCG6aP+jxigijw=='
   let options = {
     url: "https://api.m.jd.com/",
     body: `functionId=TaskInviteService&body=${JSON.stringify({"method":"participateInviteTask","data":{"channel":"1","encryptionInviterPin":encodeURIComponent(inviterId),"type":1}})}&appid=market-task-h5&uuid=&_t=${Date.now()}`,
@@ -830,14 +823,7 @@ function invite2() {
 
 function invite() {
   let t = +new Date()
-  let inviterIdArr = [
-    "9vOskAagcMJ4EOWXPQSS9A==",
-    "9irilvenEupYF488TUrl19DLuKQ9zWnXYHf9anC0ujw=",
-    "0Iut/X6Fx833sGPARnxK0TEJAHhGl+YhaIQMI1735mE=",
-    "EX5edGJ14b70ZUglRq7IMmT3GewOP9IL/BN3k2dfrjw=",
-    "ty6iFSNMeLZfu/F1QvwzAnifpKIunqsG7am3vAp9rkc="
-  ]
-  let inviterId = inviterIdArr[Math.floor((Math.random() * inviterIdArr.length))]
+  let inviterId = '26SeXThtMCG6aP+jxigijw=='
   let options = {
     url: `https://api.m.jd.com/?t=${t}`,
     body: `functionId=InviteFriendChangeAssertsService&body=${JSON.stringify({"method":"attendInviteActivity","data":{"inviterPin":encodeURIComponent(inviterId),"channel":1,"token":"","frontendInitStatus":""}})}&referer=-1&eid=eidI9b2981202fsec83iRW1nTsOVzCocWda3YHPN471AY78%2FQBhYbXeWtdg%2F3TCtVTMrE1JjM8Sqt8f2TqF1Z5P%2FRPGlzA1dERP0Z5bLWdq5N5B2VbBO&aid=&client=ios&clientVersion=14.4.2&networkType=wifi&fp=-1&uuid=ab048084b47df24880613326feffdf7eee471488&osVersion=14.4.2&d_brand=iPhone&d_model=iPhone10,2&agent=-1&pageClickKey=-1&platform=3&lang=zh_CN&appid=market-task-h5&_t=${t}`,

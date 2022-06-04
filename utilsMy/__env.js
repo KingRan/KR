@@ -14,9 +14,12 @@ const envList = {
   exjxbeans: true,
   BEANCHANGE_DISABLELIST: '东东农场&京喜工厂&东东萌宠&京东工厂&喜豆查询&金融养猪',
   InviterPin: '26SeXThtMCG6aP+jxigijw==',
+  zdtx: true,
+  yqm: '26SeXThtMCG6aP+jxigijw==',
   CFD_LOOP_LIMIT: 1,
   CFD_LOOP_SLEEPTIME: 1000*30,
   JOY_COIN_MAXIMIZE: '1',
+  dlbtz: true,
   jdPetNotNotifyList: ['lianhua891124', 'jd_PgSeKEbOKiDO'],
   jdFruitNotNotifyList: ['%E9%A6%99%E7%8C%AA%E5%AE%9D'],
   JD_JOY_PARK_RUN_MSG_TIME: [12, 16, 18, 20, 23],
@@ -27,7 +30,11 @@ const envList = {
   joyTask: [],
   joyNotRun: ['jd_fMOTUvgIPZGX'],
   ZJD_OPEN: 20,
-  jxmcHelp: 'hongbao',
+  jd_zdjr_activityId: '',
+  jd_zdjr_activityUrl: '',
+  jd_wxSecond_activityId: '',
+  jd_wxCollectCard_activityId: '',
+  tytpacketId: '',
 }
 
 function setEnv() {
