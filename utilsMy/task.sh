@@ -53,6 +53,7 @@
 
 
 # 京东
+11 1,20 * * * /usr/local/bin/node /home/data/KR/jd_cash_windfgg.js
 10 9,12,16,20,23 * * * /usr/local/bin/node /home/data/KR/jd_bean_change_pro.js
 23 1,6,15,21 * * * /usr/local/bin/node /home/data/KR/jd_bean_home.js
 6 23 * * * /usr/local/bin/node /home/data/KR/jd_bean_info.js
