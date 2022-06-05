@@ -701,7 +701,7 @@ function request(function_id, body = {}) {
   })
 }
 function taskUrl(function_id, body) {
-  body["version"] = "9.2.4.0";
+  body["version"] = "9.2.4.1";
   body["monitor_source"] = "plant_app_plant_index";
   body["monitor_refer"] = "";
   return {

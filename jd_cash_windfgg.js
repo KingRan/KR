@@ -302,9 +302,9 @@ function getSignfromPanda(functionId, body) {
 				} else {
 					data = JSON.parse(data);				
 				if (data && data.code == 200) {
-                    //lnrequesttimes = data.request_times;
-                    //console.log("衰仔，连接Windfgg服务成功(*^▽^*)，当前Token使用次数为:" + lnrequesttimes);
-										console.log("衰仔，连接Windfgg服务成功(*^▽^*)");
+                    lnrequesttimes = data.request_times;
+                    console.log("衰仔，连接Windfgg服务成功(*^▽^*)，当前Token使用次数为:" + lnrequesttimes);
+										//console.log("衰仔，连接Windfgg服务成功(*^▽^*)");
                     if (data.data){
                         strsign = data.data || '';
 						}

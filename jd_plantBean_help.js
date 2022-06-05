@@ -148,7 +148,7 @@ async function doHelp() {
 		  await $.wait(30 * 1000);
 		  lnruns = 0;
 	  }
-    if ($.helpResult && $.helpResult.code === '0') {
+        if ($.helpResult && $.helpResult.code === '0' && !$.helpResult.errorCode) {
       console.log(`助力好友结果: ${JSON.stringify($.helpResult.data.helpShareRes)}`);
       if ($.helpResult.data && $.helpResult.data.helpShareRes) {
         if ($.helpResult.data.helpShareRes.state === '1') {
