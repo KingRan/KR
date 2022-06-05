@@ -42,7 +42,6 @@
 30 0-23/4 * * * /usr/local/bin/node /home/data/KR/jd_my_cfd_loop.js
 
 # 微信
-2 0,7 * * * /usr/local/bin/node /home/data/KR/jd_xgyl_wx.js
 
 # 活动
 20 11 * * * /usr/local/bin/node /home/data/KR/jd_zdjr.js
