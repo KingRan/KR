@@ -630,7 +630,7 @@ async function getExtraAward() {
         let time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getMinutes();
         console.log(`\n京东昵称【${item.nickName || "匿名用户"}】 在 ${time} 给您助过力\n`);
       })
-      message += `【助力您的好友】${str}\n`;
+      message += `【助力您的好友】${$.farmAssistResult?.assistFriendList?.length}\n`;
     }
     console.log('领取额外奖励水滴结束\n');
   } else {

@@ -71,7 +71,7 @@
 10 0,6-23 * * * /usr/local/bin/node /home/data/KR/jd_my_dreamFactory.js
 3 1,11 * * * /usr/local/bin/node /home/data/KR/jd_m_sign.js
 2 6 * * 5 /usr/local/bin/node /home/data/KR/jd_xs_zzl.js
-15 25-31,1-18 5,6 * /usr/local/bin/node /home/data/KR/jd_xiaomi.js
+1 15 25-31,1-18 5,6 * /usr/local/bin/node /home/data/KR/jd_xiaomi.js
 0 10 * * * /usr/local/bin/node /home/data/KR/jd_wyw.js
 18 0,2,20 * * * /usr/local/bin/node /home/data/KR/jd_wish.js
 18 21 * * * /usr/local/bin/node /home/data/KR/jd_unsubscriLive.js
