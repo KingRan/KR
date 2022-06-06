@@ -2423,6 +2423,9 @@ function pushPlusNotify(text, desp) {
         if (PUSH_PLUS_TOKEN) {
 
             //desp = `<font size="3">${desp}</font>`;
+            if(desp.indexOf('请重新登录获取') > -1 && text.indexOf('京东资产变动') < 0) {
+                return resolve()
+            }
             Object.entries(COOKIESNAME).forEach(([cookieKey, cookieValue]) => {
                 desp = desp.replace(new RegExp(cookieKey,'g'), cookieValue);
                 text = text.replace(new RegExp(cookieKey,'g'), cookieValue);
