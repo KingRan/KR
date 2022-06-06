@@ -620,7 +620,7 @@ function TotalBean() {
               return;
             }
             if (data['retcode'] === "0" && data.data && data.data.hasOwnProperty("userInfo")) {
-              $.nickName = data.data.userInfo.baseInfo.nickname;
+              // $.nickName = data.data.userInfo.baseInfo.nickname;
             }
           } else {
             $.log('京东服务器返回空数据');

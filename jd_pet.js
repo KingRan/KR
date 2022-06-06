@@ -489,7 +489,7 @@ function TotalBean() {
                             return
                         }
                         if (data['retcode'] === 0 && data.base && data.base.nickname) {
-                            $.nickName = data.base.nickname;
+                            // $.nickName = data.base.nickname;
                         }
                     } else {
                         console.log(`京东服务器返回空数据`)
