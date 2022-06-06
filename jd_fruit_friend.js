@@ -134,7 +134,7 @@ let llgetshare = false;
         }
     }
   if ($.isNode() && allMessage && $.ctrTemp) {
-    await notify.sendNotify(`${$.name}`, `${allMessage}`)
+    // await notify.sendNotify(`${$.name}`, `${allMessage}`)
   }
 })()
   .catch((e) => {
@@ -158,7 +158,7 @@ async function jdFruit() {
     console.log(`任务执行异常，请检查执行日志 ‼️‼️`);
     $.logErr(e);
 	const errMsg = `京东账号${$.index} ${$.nickName || $.UserName}\n任务执行异常，请检查执行日志 ‼️‼️`;
-    if ($.isNode()) await notify.sendNotify(`${$.name}`, errMsg);
+    // if ($.isNode()) await notify.sendNotify(`${$.name}`, errMsg);
     $.msg($.name, '', `${errMsg}`)
   }
   //await showMsg();
