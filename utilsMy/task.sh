@@ -65,9 +65,7 @@
 20,40 23 * * * /usr/local/bin/node /home/data/KR/jd_duobao.js
 13 7 * * * /usr/local/bin/node /home/data/KR/jd_dwapp.js
 3 1,21 * * * /usr/local/bin/node /home/data/KR/jd_fan.js
-10 4,16 * * * /usr/local/bin/node /home/data/KR/jd_fruit_help.js
-10 0-23/4 * * * /usr/local/bin/node /home/data/KR/jd_fruit_friend.js
-5 6-18/6 * * * /usr/local/bin/node /home/data/KR/jd_fruit_task.js
+5 2,6-18/6 * * * /usr/local/bin/node /home/data/KR/jd_my_fruit.js
 10 0,6-23 * * * /usr/local/bin/node /home/data/KR/jd_my_dreamFactory.js
 3 1,11 * * * /usr/local/bin/node /home/data/KR/jd_m_sign.js
 2 6 * * 5 /usr/local/bin/node /home/data/KR/jd_xs_zzl.js
