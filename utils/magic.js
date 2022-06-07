@@ -1,5 +1,4 @@
 // noinspection JSUnresolvedFunction,JSUnresolvedVariable
-
 const axios = require('axios');
 const fs = require("fs");
 const {format} = require("date-fns");
@@ -84,10 +83,7 @@ class Env {
     }
 
     async run(data = {
-        wait: [1000, 2000],
-        bot: false,
-        delimiter: '',
-        o2o: false,
+	@@ -91,32 +120,56 @@ class Env {
         random: false,
         once: false,
         blacklist: [],
@@ -120,56 +116,14 @@ class Env {
         if (data?.random) {
             cookies = this.randomArray(cookies)
         }
-        await this.verify()
-        this.cookies = cookies;
-        if (data?.before) {
-            for (let i = 0; i <= this.cookies.length; i++) {
-                if (this.cookies[i] && !this.expire) {
-                    let cookie = this.cookies[i];
-                    this.cookie = cookie;
-                    this.username = decodeURIComponent(
-                        cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
-                    $.defaults.headers['Cookie'] = this.cookie;
-                    this.index = i + 1;
-                    let me = {
-                        username: this.username,
-                        index: this.index,
-                        cookie: this.cookie
-                    };
-                    try {
-                        this.ext.push(Object.assign(me, await this.before()));
-                    } catch (e) {
-                        console.log(e)
-                    }
-                    if (data?.wait?.length > 0 && this.index
-                        !== cookies.length) {
-                        await this.wait(data?.wait[0], data?.wait[1])
-                    }
-                }
-            }
-        }
-        let once = false;
-        for (let i = 0; i <= this.cookies.length; i++) {
-            if (this.cookies[i] && !this.expire) {
-                this.index = i + 1;
-                if (data?.once && this.index !== data.once) {
-                    once = true;
-                    continue;
-                }
-                let cookie = this.cookies[i];
-                this.cookie = cookie;
-                this.username = decodeURIComponent(
+	@@ -162,6 +215,7 @@ class Env {
                     cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
                 $.defaults.headers['Cookie'] = this.cookie;
                 this.index = i + 1;
                 try {
                     await this.logic()
                     if (data?.o2o) {
-                        await this.send();
-                        testMode ? this.log(this.msg.join("\n")) : ''
-                        this.msg = [];
-                    }
-                    if (once) {
+	@@ -173,15 +227,15 @@ class Env {
                         break;
                     }
                 } catch (e) {
@@ -185,29 +139,14 @@ class Env {
         - this.start}ms\n`)
         testMode && this.msg.length > 0 ? console.log(this.msg.join("\n")) : ''
         if (!data?.o2o) {
-            await this.send();
-        }
-    }
-
-    async config() {
+	@@ -193,6 +247,56 @@ class Env {
 
     }
 
     deleteCookie() {
         delete this.cookies[this.index - 1]
         return {};
-    }
-
-    groupBy(arr, fn) {
-        const data = {};
-        arr.forEach(function (o) {
-            const k = fn(o);
-            data[k] = data[k] || []
-            data[k].push(o)
-        })
-
-        return data;
-    }
+	@@ -211,14 +315,14 @@ class Env {
 
     async send() {
         if (this.msg?.length > 0) {
@@ -222,27 +161,7 @@ class Env {
             }
         }
     }
-
-    async verify() {
-        let fn = this.filename
-
-        function av(s) {
-            return s.trim().match(/([a-z_])*$/)[0];
-        }
-
-        let x = '109M95O106F120V95B', y = '99M102F100O', z = '109H99V',
-            j = '102N97I99D116T111G114A121B', k = '112C112U',
-            l = '109N95G106B100K95U', m = '119V120M';
-        let reg = /[A-Z]/;
-        x.concat(y).split(reg).map(o => +o).filter(o => o > 0).forEach(
-            o => y += String.fromCharCode(o))
-        x.concat(z).split(reg).map(o => +o).filter(o => o > 0).forEach(
-            o => z += String.fromCharCode(o))
-        x.concat(j).split(reg).map(o => +o).filter(o => o > 0).forEach(
-            o => j += String.fromCharCode(o))
-        x.concat(k).split(reg).map(o => +o).filter(o => o > 0).forEach(
-            o => k += String.fromCharCode(o))
-        l.concat(m).split(reg).map(o => +o).filter(o => o > 0).forEach(
+	@@ -246,16 +350,19 @@ class Env {
             o => m += String.fromCharCode(o))
         this.appId = fn ? this.name.slice(0, 1)
             === String.fromCharCode(77)
@@ -259,18 +178,14 @@ class Env {
         if (max) {
             return new Promise(
                 (resolve) => setTimeout(resolve, this.random(min, max)));
-        } else {
-            return new Promise((resolve) => setTimeout(resolve, min));
-        }
+	@@ -265,6 +372,7 @@ class Env {
     }
 
     putMsg(msg) {
         this.log(msg)
         let r = [[' ', ''], ['优惠券', '券'], ['东券', '券'], ['店铺', ''],
             ['恭喜', ''], ['获得', '']]
-        for (let ele of r) {
-            msg = msg.replace(ele[0], ele[1])
-        }
+	@@ -274,13 +382,15 @@ class Env {
         if (this.bot) {
             this.msg.push(msg)
         } else {
@@ -284,14 +199,7 @@ class Env {
             }
         }
     }
-
-    md5(str) {
-        return CryptoJS.MD5(str).toString()
-    }
-
-    HmacSHA256(param, key) {
-        return CryptoJS.HmacSHA256(param, key).toString()
-    }
+	@@ -295,7 +405,8 @@ class Env {
 
     log(...msg) {
         this.s ? console.log(...msg) : console.log(
@@ -299,176 +207,7 @@ class Env {
     }
 
     //并
-    union(a, b) {
-        return a.concat(b.filter(o => !a.includes(o)))
-    }
-
-    //交
-    intersection(a, b) {
-        return a.filter(o => b.includes(o))
-    }
-
-    //交
-    different(a, b) {
-        return a.concat(b).filter(o => a.includes(o) && !b.includes(o))
-    }
-
-    build(url) {
-        if (url.match(/&callback=(jsonpCBK(.*))&/)) {
-            let cb = url.match(/&callback=(jsonpCBK(.*))&/);
-            url = url.replace(cb[1], this.randomCallback(cb[2].length || 0))
-        }
-        let stk = decodeURIComponent(this.getQueryString(url, '_stk') || '');
-        if (stk) {
-            let ens, hash, st = '',
-                ts = this.now('yyyyMMddHHmmssSSS').toString(),
-                tk = this.algo.tk, fp = this.algo.fp, em = this.algo.em;
-            if (tk && fp && em) {
-                hash = em(tk, fp, ts, this.appId, CryptoJS).toString(
-                    CryptoJS.enc.Hex)
-            } else {
-                const random = '5gkjB6SpmC9s';
-                tk = 'tk01wcdf61cb3a8nYUtHcmhSUFFCfddDPRvKvYaMjHkxo6Aj7dhzO+GXGFa9nPXfcgT+mULoF1b1YIS1ghvSlbwhE0Xc';
-                fp = '9686767825751161';
-                hash = CryptoJS.SHA512(
-                    `${tk}${fp}${ts}${this.appId}${random}`,
-                    tk).toString(CryptoJS.enc.Hex);
-            }
-            stk.split(',').map((item, index) => {
-                st += `${item}:${this.getQueryString(url, item)}${index
-                === stk.split(',').length - 1 ? '' : '&'}`;
-            })
-            ens = encodeURIComponent(
-                [''.concat(ts), ''.concat(fp),
-                    ''.concat(this.appId), ''.concat(tk),
-                    ''.concat(CryptoJS.HmacSHA256(st, hash.toString()).toString(
-                        CryptoJS.enc.Hex))].join(';'));
-            if (url.match(/[?|&]h5st=(.*?)&/)) {
-                url = url.replace(url.match(/[?|&]h5st=(.*?)&/)[1], 'H5ST')
-                .replace(/H5ST/, ens)
-            }
-            let matchArr = [/[?|&]_time=(\d+)/, /[?|&]__t=(\d+)/,
-                /[?|&]_ts=(\d+)/,
-                /[?|&]_=(\d+)/, /[?|&]t=(\d+)/, /[?|&]_cfd_t=(\d+)/]
-            for (let ms of matchArr) {
-                if (url.match(ms)) {
-                    url = url.replace(url.match(ms)[1], Date.now())
-                }
-            }
-            let t = this._tk();
-            if (url.match(/strPgUUNum=(.*?)&/)) {
-                url = url.replace(url.match(/strPgUUNum=(.*?)&/)[1], t.tk)
-                if (url.match(/strPhoneID=(.*?)&/)) {
-                    url = url.replace(url.match(/strPhoneID=(.*?)&/)[1], t.id)
-                }
-                if (url.match(/strPgtimestamp=(.*?)&/)) {
-                    url = url.replace(url.match(/strPgtimestamp=(.*?)&/)[1],
-                        t.ts)
-                }
-            }
-            if (url.match(/jxmc_jstoken=(.*?)&/)) {
-                url = url.replace(url.match(/jxmc_jstoken=(.*?)&/)[1], t.tk)
-                if (url.match(/phoneid=(.*?)&/)) {
-                    url = url.replace(url.match(/phoneid=(.*?)&/)[1], t.id)
-                }
-                if (url.match(/timestamp=(.*?)&/)) {
-                    url = url.replace(url.match(/timestamp=(.*?)&/)[1], t.ts)
-                }
-            }
-        }
-        return url;
-    }
-
-    getQueryString(url, name) {
-        let reg = new RegExp("(^|[&?])" + name + "=([^&]*)(&|$)");
-        let r = url.match(reg);
-        if (r != null) {
-            return unescape(r[2]);
-        }
-        return '';
-    }
-
-    unique(arr) {
-        return Array.from(new Set(arr))
-    }
-
-    async logic() {
-        console.log("default logic")
-    }
-
-    async before() {
-        return -1;
-    }
-
-    async after() {
-        return -1;
-    }
-
-    tryLock(username, key) {
-        try {
-            fs.accessSync(`/jd/log/lock/${key}_${username}`);
-            return false;
-        } catch (e) {
-            return true;
-        }
-    }
-
-    setLock(username, key) {
-        try {
-            try {
-                fs.accessSync(`/jd/log/lock`);
-            } catch (e) {
-                fs.mkdirSync(`/jd/log/lock`);
-            }
-            fs.mkdirSync(`/jd/log/lock/${key}_${username}`);
-            return false;
-        } catch (e) {
-            return true;
-        }
-    }
-
-    match(pattern, string) {
-        pattern = (pattern instanceof Array) ? pattern : [pattern];
-        for (let pat of pattern) {
-            const match = pat.exec(string);
-            if (match) {
-                const len = match.length;
-                if (len === 1) {
-                    return match;
-                } else if (len === 2) {
-                    return match[1];
-                } else {
-                    const r = [];
-                    for (let i = 1; i < len; i++) {
-                        r.push(match[i])
-                    }
-                    return r;
-                }
-            }
-        }
-        return '';
-    }
-
-    matchAll(pattern, string) {
-        pattern = (pattern instanceof Array) ? pattern : [pattern];
-        let match;
-        let result = [];
-        for (let p of pattern) {
-            while ((match = p.exec(string)) != null) {
-                let len = match.length;
-                if (len === 1) {
-                    result.push(match);
-                } else if (len === 2) {
-                    result.push(match[1]);
-                } else {
-                    let r = [];
-                    for (let i = 1; i < len; i++) {
-                        r.push(match[i])
-                    }
-                    result.push(r);
-                }
-            }
-        }
+	@@ -472,15 +583,34 @@ class Env {
         return result;
     }
 
@@ -484,18 +223,7 @@ class Env {
         }
     }
 
-    readFileSync(path) {
-        try {
-            return fs.readFileSync(path).toString();
-        } catch (e) {
-            console.log(path, '文件不存在进行创建')
-            this.writeFileSync(path, '');
-            return '';
-        }
-    }
-
-    writeFileSync(path, data) {
-        fs.writeFileSync(path, data)
+	@@ -499,7 +629,8 @@ class Env {
     }
 
     random(min, max) {
@@ -503,15 +231,7 @@ class Env {
     }
 
     async notify(text, desc) {
-        return notify.sendNotify(text, desc);
-    }
-
-    async get(url, headers) {
-        url = this.appId ? this.build(url) : url
-        return new Promise((resolve, reject) => {
-            $.get(url, {headers: headers}).then(
-                data => resolve(this.handler(data) || data))
-            .catch(e => reject(e))
+	@@ -515,14 +646,6 @@ class Env {
         })
     }
 
@@ -526,9 +246,7 @@ class Env {
     async post(url, body, headers) {
         url = this.appId ? this.build(url) : url
         return new Promise((resolve, reject) => {
-            $.post(url, body, {headers: headers})
-            .then(data => resolve(this.handler(data) || data))
-            .catch(e => reject(e));
+	@@ -532,7 +655,6 @@ class Env {
         })
     }
 
@@ -536,24 +254,7 @@ class Env {
     async request(url, headers, body) {
         return new Promise((resolve, reject) => {
             let __config = headers?.headers ? headers : {headers: headers};
-            (body ? $.post(url, body, __config) : $.get(url, __config))
-            .then(data => {
-                this.__lt(data);
-                resolve(data)
-            })
-            .catch(e => reject(e));
-        })
-    }
-
-    __lt(data) {
-        if (this.appId.length !== 2) {
-            return
-        }
-        let scs = data?.headers['set-cookie'] || data?.headers['Set-Cookie']
-            || ''
-        if (!scs) {
-            if (data?.data?.LZ_TOKEN_KEY && data?.data?.LZ_TOKEN_VALUE) {
-                this.lz = `LZ_TOKEN_KEY=${data.data.LZ_TOKEN_KEY};LZ_TOKEN_VALUE=${data.data.LZ_TOKEN_VALUE};`;
+	@@ -557,25 +679,41 @@ class Env {
             }
             return;
         }
@@ -579,15 +280,7 @@ class Env {
         if (!data) {
             return;
         }
-        if (typeof data === 'string') {
-            data = data.replace(/[\n\r| ]/g, '');
-            if (data.includes("try{jsonpCB")) {
-                data = data.replace(/try{jsonpCB.*\({/, '{')
-                .replace(/}\)([;])?}catch\(e\){}/, '}')
-            } else if (data.includes('jsonpCB')) {
-                let st = data.replace(/[\n\r]/g, '').replace(/jsonpCB.*\({/,
-                    '{');
-                data = st.substring(0, st.length - 1)
+	@@ -591,10 +729,9 @@ class Env {
             } else if (data.match(/try{.*\({/)) {
                 data = data.replace(/try{.*\({/, '{')
                 .replace(/}\)([;])?}catch\(e\){}/, '}')
@@ -598,25 +291,7 @@ class Env {
             }
             testMode ? console.log(data) : ''
             testMode ? console.log('----------------分割线--------------------')
-                : ''
-            return JSON.parse(data)
-        }
-        testMode ? console.log(JSON.stringify(data)) : ''
-        testMode ? console.log('----------------分割线---------------------') : ''
-        return data;
-    }
-
-    randomNum(length) {
-        length = length || 32;
-        let t = "0123456789", a = t.length, n = '';
-        for (let i = 0; i < length; i++) {
-            n += t.charAt(Math.floor(Math.random() * a));
-        }
-        return n
-    }
-
-    randomString(e) {
-        return this.uuid()
+	@@ -620,15 +757,13 @@ class Env {
     }
 
     uuid(x = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx") {
@@ -632,43 +307,14 @@ class Env {
         let headers = {
             'Accept': 'application/json, text/plain, */*',
             'Accept-Encoding': 'gzip, deflate, br',
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Host': 'api.m.jd.com',
-            'Connection': 'keep-alive',
-            'Accept-Language': 'zh-cn',
-            'Cookie': this.cookie
-        }
-        headers['User-Agent'] = `Mozilla/5.0 (iPhone; CPU iPhone OS 14_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.4(0x1800042c) NetType/4G Language/zh_CN miniProgram`
-        let {data} = await this.request(url, headers, body);
-        this.log(data.msg)
+	@@ -644,6 +779,24 @@ class Env {
         return data;
     }
 
     randomCallback(e = 1) {
         let t = "abcdefghigklmnopqrstuvwsyz", a = t.length, n = '';
         for (let i = 0; i < e; i++) {
-            n += t.charAt(Math.floor(Math.random() * a));
-        }
-        return "jsonpCBK" + n.toUpperCase()
-    }
-
-    randomArray(arr, count) {
-        count = count || arr.length
-        let shuffled = arr.slice(0), i = arr.length, min = i - count, temp,
-            index;
-        while (i-- > min) {
-            index = Math.floor((i + 1) * Math.random());
-            temp = shuffled[index];
-            shuffled[index] = shuffled[i];
-            shuffled[i] = temp;
-        }
-        return shuffled.slice(min);
-    }
-
-    now(fmt) {
-        return format(Date.now(), fmt || 'yyyy-MM-dd HH:mm:ss.SSS')
-    }
-
+	@@ -672,10 +825,17 @@ class Env {
     formatDate(date, fmt) {
         // noinspection JSCheckFunctionSignatures
         return format(typeof date === 'object' ? date : new Date(
@@ -679,17 +325,7 @@ class Env {
     timestamp() {
         return new Date().getTime()
     }
-
-    _tk() {
-        let id = function (n) {
-            let src = 'abcdefghijklmnopqrstuvwxyz1234567890', res = '';
-            for (let i = 0; i < n; i++) {
-                res += src[Math.floor(src.length * Math.random())];
-            }
-            return res;
-        }(40), ts = Date.now().toString(), tk = this.md5(
-            '' + decodeURIComponent(this.username) + ts + id
-            + 'tPOamqCuk9NLgVPAljUyIHcPRmKlVxDy');
+	@@ -693,66 +853,155 @@ class Env {
         return {ts: ts, id: id, tk: tk}
     }
 
@@ -756,5 +392,3 @@ class Env {
         }
     }
 }
-
-module.exports = {Env, CryptoJS};
