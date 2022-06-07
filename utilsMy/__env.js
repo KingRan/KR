@@ -36,7 +36,7 @@ const envList = {
   jd_wxCollectCard_activityId: '',
   tytpacketId: '',
   WindfggToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY1NDQyMTg4NiwianRpIjoiMWExZGYxYTYtMWIxOS00MGI5LWE1YWItZjBlZjk1NTk4MzE5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjE4MTAxNTYzNDAiLCJuYmYiOjE2NTQ0MjE4ODYsImV4cCI6MTY4NTk1Nzg4Nn0.EUVHSeOmhO4VTvf1Y-Gy-IDT_aOtNZPAokgBsl5q2A8',
-  jd_cjhy_activityId: '101b64f7eb904041aa21ae861273b5bc',
+  jd_cjhy_activityId: '8e318789e130497ca82790819dc1021e',
   jd_cjhy_activityUrl: 'https://cjhydz-isv.isvjcloud.com',
   jd_fxyl_activityId: '31cb3868a5f04dac86337cf4b242a28e'
 }
