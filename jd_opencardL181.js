@@ -1,5 +1,5 @@
 /*
-6.8~6.18 全力以赴 谁是囤货王
+6.8~6.18 大牌联合 好物焕新季
 新增开卡脚本，一次性脚本
 
 
@@ -8,20 +8,20 @@
 第一个CK失效会退出脚本
 
 ————————————————
-入口：[ 6.8~6.18 全力以赴 谁是囤货王]
+入口：[ 6.8~6.18 大牌联合 好物焕新季]
 
 请求太频繁会被黑ip
 过10分钟再执行
 
-cron:52 0,18 8-18 6 *
+cron:10 14 9-18 6 *
 ============Quantumultx===============
 [task_local]
-#6.8~6.18 全力以赴 谁是囤货王
-52 0,18 8-18 6 * jd_opencardL179.js, tag=6.8~6.18 全力以赴 谁是囤货王, enabled=true
+#6.8~6.18 大牌联合 好物焕新季
+10 14 9-18 6 * jd_opencardL181.js, tag=6.8~6.18 大牌联合 好物焕新季, enabled=true
 
 */
 
-const $ = new Env('6.8~6.18 全力以赴 谁是囤货王')
+const $ = new Env('6.8~6.18 大牌联合 好物焕新季')
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 
@@ -51,10 +51,10 @@ let activityCookie =''
     });
     return;
   }
-  $.activityId = "dzlhkke4cc7da358ff4fa18352ce88"
-  $.shareUuid = "f3f9154576fa47e2950f67ec49439526"
+  $.activityId = "dzlhkk5bd64e98a31ebbe366e45bb8"
+  $.shareUuid = "1b848e4d199d4b9887b390c48d333ad9"
   console.log(`入口:\nhttps://lzdz1-isv.isvjcloud.com/dingzhi/customized/common/activity?activityId=${$.activityId}&shareUuid=${$.shareUuid}`)
-  let shareUuidArr = ["f3f9154576fa47e2950f67ec49439526","c7318d9803774d4eb255ac9c0fddcf97","18a6b032750f40d5868e9ffb864474c0"]
+  let shareUuidArr = ["1b848e4d199d4b9887b390c48d333ad9","cb3ed61745bc45caa7de6a8a57108a22","d5fda3d3fe2345b4b611835f9ab11557"]
   let s = Math.floor((Math.random()*3))
   let n = 0
   n = Math.floor((Math.random()*shareUuidArr.length))
@@ -117,7 +117,7 @@ async function run() {
       console.log('此ip已被限制，请过10分钟后再执行脚本\n')
       return
     }
-    await takePostRequest('getSimpleActInfoVo');
+    //await takePostRequest('getSimpleActInfoVo');
     await takePostRequest('getMyPing');
     if(!$.Pin){
       console.log('获取[Pin]失败！')
@@ -131,12 +131,12 @@ async function run() {
       console.log('获取不到[actorUuid]退出执行，请重新执行')
       return
     }
-    if($.hasEnd === true || Date.now() > $.endTime){
-      $.activityEnd = true
-      console.log('活动结束')
-      return
-    }
-    await takePostRequest('drawContent');
+    // if($.hasEnd === true || Date.now() > $.endTime){
+      // $.activityEnd = true
+      // console.log('活动结束')
+      // return
+    // }
+    //await takePostRequest('drawContent');
     await $.wait(1000)
     $.openList = []
     $.allOpenCard = false
@@ -168,7 +168,7 @@ async function run() {
             $.joinStatus = true
           }
           await takePostRequest('activityContent');
-          await takePostRequest('drawContent');
+          //await takePostRequest('drawContent');
           await takePostRequest('checkOpenCard');
           await $.wait(parseInt(Math.random() * 2000 + 1000, 10))
         }
@@ -252,12 +252,12 @@ async function takePostRequest(type) {
         break;
       case 'getMyPing':
         url = `${domain}/customer/getMyPing`;
-        body = `userId=${$.shopId || $.venderId || ''}&token=${$.Token}&fromType=APP`;
+        body = `userId=1000000866&token=${$.Token}&fromType=APP`;
         break;
       case 'accessLogWithAD':
         url = `${domain}/common/accessLogWithAD`;
         let pageurl = `${domain}/dingzhi/customized/common/activity?activityId=${$.activityId}&shareUuid=${$.shareUuid}`
-        body = `venderId=${$.shopId || $.venderId || ''}&code=99&pin=${encodeURIComponent($.Pin)}&activityId=${$.activityId}&pageUrl=${encodeURIComponent(pageurl)}&subType=app&adSource=`
+        body = `venderId=1000000866&code=99&pin=${encodeURIComponent($.Pin)}&activityId=${$.activityId}&pageUrl=${encodeURIComponent(pageurl)}&subType=app&adSource=`
         break;
       case 'getUserInfo':
         url = `${domain}/wxActionCommon/getUserInfo`;
