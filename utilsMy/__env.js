@@ -40,7 +40,7 @@ const envList = {
   jd_cjhy_activityUrl: 'https://cjhydz-isv.isvjcloud.com',
   jd_fxyl_activityId: '31cb3868a5f04dac86337cf4b242a28e',
   jd_wdz_activityId: '25f43d1333844ccc97a20bce2ee2fb90',
-  jd_wdz_activityUrl: 'https://cjhydz-isv.isvjcloud.com'
+  jd_wdz_activityUrl: 'https://cjhydz-isv.isvjcloud.com',
 }
 
 function setEnv() {
