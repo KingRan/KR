@@ -36,11 +36,14 @@ const envList = {
   jd_wxCollectCard_activityId: '',
   tytpacketId: '',
   WindfggToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY1NDQyMTg4NiwianRpIjoiMWExZGYxYTYtMWIxOS00MGI5LWE1YWItZjBlZjk1NTk4MzE5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjE4MTAxNTYzNDAiLCJuYmYiOjE2NTQ0MjE4ODYsImV4cCI6MTY4NTk1Nzg4Nn0.EUVHSeOmhO4VTvf1Y-Gy-IDT_aOtNZPAokgBsl5q2A8',
-  jd_cjhy_activityId: '8e318789e130497ca82790819dc1021e',
+  jd_cjhy_activityId: '3e14e71836854a01aa37ed73c7fb4367',
   jd_cjhy_activityUrl: 'https://cjhydz-isv.isvjcloud.com',
   jd_fxyl_activityId: '31cb3868a5f04dac86337cf4b242a28e',
   jd_wdz_activityId: '25f43d1333844ccc97a20bce2ee2fb90',
   jd_wdz_activityUrl: 'https://cjhydz-isv.isvjcloud.com',
+  JD_Lottery: 'f86c818ff35549bd9e9d68acdafb8ebf',
+  JD_JOYOPEN: '11f663b79e7c48c08cc6b93cd61b0825',
+  VENDER_ID: '1000411104'
 }
 
 function setEnv() {
