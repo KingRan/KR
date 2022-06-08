@@ -43,7 +43,8 @@ const envList = {
   jd_wdz_activityUrl: 'https://cjhydz-isv.isvjcloud.com',
   JD_Lottery: 'f86c818ff35549bd9e9d68acdafb8ebf',
   JD_JOYOPEN: '11f663b79e7c48c08cc6b93cd61b0825',
-  VENDER_ID: '1000411104'
+  VENDER_ID: '1000411104',
+  jd_drawCenter_activityId: '83c30c6cf1364ec89605232ce7482634'
 }
 
 function setEnv() {
