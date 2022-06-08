@@ -37,7 +37,7 @@
 
 13 6-23/2 * * * /usr/local/bin/node /home/data/KR/jd_my_jxmc.js
 5 0,10 * * * /usr/local/bin/node /home/data/KR/jd_my_jxmc_help.js
-5 3,12,18,21 * * * /usr/local/bin/node /home/data/KR/jd_my_cfd.js
+5 3,6,9,12,15,18,21 * * * /usr/local/bin/node /home/data/KR/jd_my_cfd.js
 5 0,9 * * * /usr/local/bin/node /home/data/KR/jd_my_cfd_help.js
 30 0-23/4 * * * /usr/local/bin/node /home/data/KR/jd_my_cfd_loop.js
 
