@@ -67,7 +67,7 @@
 3 1,21 * * * /usr/local/bin/node /home/data/KR/jd_fan.js
 10 4,16 * * * /usr/local/bin/node /home/data/KR/jd_fruit_help.js
 10 0-23/4 * * * /usr/local/bin/node /home/data/KR/jd_fruit_friend.js
-5 6-18/6 * * * /usr/local/bin/node /home/data/KR/jd_fruit_task.js
+5 2,6-18/6 * * * /usr/local/bin/node /home/data/KR/jd_fruit_task.js
 10 0,6-23 * * * /usr/local/bin/node /home/data/KR/jd_my_dreamFactory.js
 3 1,11 * * * /usr/local/bin/node /home/data/KR/jd_m_sign.js
 2 6 * * 5 /usr/local/bin/node /home/data/KR/jd_xs_zzl.js
@@ -87,7 +87,7 @@
 25 0,23 * * * /usr/local/bin/node /home/data/KR/jd_price.js >> /home/data/logs/jd_script_node/jd_price.log 2>&1
 20 2-21/2 * * * /usr/local/bin/node /home/data/KR/jd_plantBean.js
 5 2,18 * * * /usr/local/bin/node /home/data/KR/jd_plantBean_help.js
-10 6-18/6 * * * /usr/local/bin/node /home/data/KR/jd_pet.js
+10 3,6-18/6 * * * /usr/local/bin/node /home/data/KR/jd_pet.js
 7 4,15 * * * /usr/local/bin/node /home/data/KR/jd_pet_help.js
 1 8 * * * /usr/local/bin/node /home/data/KR/jd_mpdzcar.js
 1 6,10,12 * * * /usr/local/bin/node /home/data/KR/jd_mpdzcar_game.js

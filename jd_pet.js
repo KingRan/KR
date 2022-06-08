@@ -89,6 +89,7 @@ console.log(`共${cookiesArr.length}个京东账号\n`);
 			}
         }
     }
+
     if ($.isNode() && allMessage) {
         await notify.sendNotify(`${$.name}`, `${allMessage}`)
     }
@@ -149,7 +150,7 @@ async function jdPet() {
             await doTask(); //做日常任务
             await feedPetsAgain(); //再次投食
             await energyCollect(); //收集好感度
-            //await showMsg();
+            await showMsg();
             
         } else if (initPetTownRes.code === '0') {
             console.log(`初始化萌宠失败:  ${initPetTownRes.message}`);
