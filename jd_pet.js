@@ -89,7 +89,7 @@ console.log(`共${cookiesArr.length}个京东账号\n`);
 			}
         }
     }
-    if ($.isNode() && allMessage && $.ctrTemp) {
+    if ($.isNode() && allMessage) {
         await notify.sendNotify(`${$.name}`, `${allMessage}`)
     }
 })()
@@ -158,7 +158,7 @@ async function jdPet() {
         $.logErr(e)
         const errMsg = `京东账号${$.index} ${$.nickName || $.UserName}\n任务执行异常，请检查执行日志 ‼️‼️`;
         if ($.isNode())
-            await notify.sendNotify(`${$.name}`, errMsg);
+            // await notify.sendNotify(`${$.name}`, errMsg);
         $.msg($.name, '', `${errMsg}`)
     }
 }
