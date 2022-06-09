@@ -38,13 +38,14 @@ const envList = {
   WindfggToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY1NDQyMTg4NiwianRpIjoiMWExZGYxYTYtMWIxOS00MGI5LWE1YWItZjBlZjk1NTk4MzE5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjE4MTAxNTYzNDAiLCJuYmYiOjE2NTQ0MjE4ODYsImV4cCI6MTY4NTk1Nzg4Nn0.EUVHSeOmhO4VTvf1Y-Gy-IDT_aOtNZPAokgBsl5q2A8',
   jd_cjhy_activityId: 'ec9db5925e1844c7b25adbc418fc0f0e',
   jd_cjhy_activityUrl: 'https://cjhydz-isv.isvjcloud.com',
-  jd_fxyl_activityId: '31cb3868a5f04dac86337cf4b242a28e',
+  jd_fxyl_activityId: '3606435cda984aca83484628e827cab2',
   jd_wdz_activityId: '08ec1d23a7c8415fa9cfc128b30df9a5',
   jd_wdz_activityUrl: 'https://cjhydz-isv.isvjcloud.com',
   JD_Lottery: 'aa6afd716cda497ab83d3f452443ecf6',
   JD_JOYOPEN: '11f663b79e7c48c08cc6b93cd61b0825',
   VENDER_ID: '1000411104',
-  jd_drawCenter_activityId: '2af17a4a89fa46979775d34e78635d04'
+  jd_drawCenter_activityId: '2af17a4a89fa46979775d34e78635d04',
+  SEVENDAY_LIST: 'b78817d3730b48188380914df178c30c',
 }
 
 function setEnv() {
