@@ -266,9 +266,9 @@ async function predictionFruit() {
     message += `【剩余 水滴】${$.farmInfo.farmUserPro.totalEnergy}g💧\n`;
     message += `【水果🍉进度】已浇水${$.farmInfo.farmUserPro.treeEnergy / 10}次,还需${($.farmInfo.farmUserPro.treeTotalEnergy - $.farmInfo.farmUserPro.treeEnergy) / 10}次\n`
     if ($.farmInfo.toFlowTimes > ($.farmInfo.farmUserPro.treeEnergy / 10)) {
-        message += `【开花进度】再浇水${$.farmInfo.toFlowTimes - $.farmInfo.farmUserPro.treeEnergy / 10}次开花\n`
+        // message += `【开花进度】再浇水${$.farmInfo.toFlowTimes - $.farmInfo.farmUserPro.treeEnergy / 10}次开花\n`
     } else if ($.farmInfo.toFruitTimes > ($.farmInfo.farmUserPro.treeEnergy / 10)) {
-        message += `【结果进度】再浇水${$.farmInfo.toFruitTimes - $.farmInfo.farmUserPro.treeEnergy / 10}次结果\n`
+        // message += `【结果进度】再浇水${$.farmInfo.toFruitTimes - $.farmInfo.farmUserPro.treeEnergy / 10}次结果\n`
     }
     // 预测n天后水果课可兑换功能
     let waterTotalT = ($.farmInfo.farmUserPro.treeTotalEnergy - $.farmInfo.farmUserPro.treeEnergy - $.farmInfo.farmUserPro.totalEnergy) / 10; //一共还需浇多少次水
@@ -609,10 +609,10 @@ async function getExtraAward() {
             }
           }
         }
-        message += `【额外奖励】${num}g水领取成功\n`;
+        // message += `【额外奖励】${num}g水领取成功\n`;
       } else if ($.farmAssistResult.status === 3) {
         console.log("已经领取过8好友助力额外奖励");
-        message += `【额外奖励】已被领取过\n`;
+        // message += `【额外奖励】已被领取过\n`;
       }
     } else {
       console.log("助力好友未达到2个");
@@ -642,15 +642,15 @@ async function getExtraAward() {
           await masterGotFinishedTaskForFarm();
           if ($.masterGotFinished.code === '0') {
             console.log(`已成功领取好友助力奖励：【${$.masterGotFinished.amount}】g水`);
-            message += `【额外奖励】${$.masterGotFinished.amount}g水领取成功\n`;
+            // message += `【额外奖励】${$.masterGotFinished.amount}g水领取成功\n`;
           }
         } else {
           console.log("已经领取过5好友助力额外奖励");
-          message += `【额外奖励】已被领取过\n`;
+          // message += `【额外奖励】已被领取过\n`;
         }
       } else {
         console.log("助力好友未达到5个");
-        message += `【额外奖励】领取失败,原因：给您助力的人未达5个\n`;
+        // message += `【额外奖励】领取失败,原因：给您助力的人未达5个\n`;
         }
         if ($.masterHelpResult.masterHelpPeoples && $.masterHelpResult.masterHelpPeoples.length > 0) {
             let str = '';
