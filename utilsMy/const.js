@@ -46,7 +46,7 @@ const COOKIES = {
     'zhenyu2--17621962167--410049': 'pt_key=AAJiiQizADCGa58xaicjei8_sdDs4ZgmjS69QXUlLKqjGvyR-JDs1BVLCwPBpJXqjUhUdgzVXaE; pt_pin=jd_68b0ef6313ac4;',
     'wangqiang2-17657610987': 'pt_key=AAJiiaNZADDUShXqXdxLexBagiVQpHO9_bOgZzca5mWzK1D4UkTzyYMirO65Nk6jj4qCslOqFjE; pt_pin=13725096398_p;',
     // 'leiqi53--18301772447': 'pt_key=AAJiedOSADC8VC4NaUsZbHPKF5r-I6sbMOprmdnLMhOM-tCvjlvso9WbyFjxuAYPM2jauBCV1-U; pt_pin=leiqi53;',
-    'leiqi二号--15769273532': 'pt_key=AAJiemHaADApB1K2px6r_3t_VKZMZ6d7TyNli0Uxba-glZRt7zYh4VH_ipuRFdEdc6XBDIUhWJ8; pt_pin=15769273532_p;',
+    // 'leiqi二号--15769273532': 'pt_key=AAJiemHaADApB1K2px6r_3t_VKZMZ6d7TyNli0Uxba-glZRt7zYh4VH_ipuRFdEdc6XBDIUhWJ8; pt_pin=15769273532_p;',
     'hupeng--13879028676--366013': 'pt_key=AAJig1vaADDIbKTxqPRzISQ-TX-VJRx3KfAC5-FYlCrcuHXkmVISemS1Pyvg2CVfyTKxW-W4Zgc; pt_pin=jd_TUmcrAJRyPeg;',
     'feifeima--13761366675--312047': 'pt_key=AAJihcdRADCwwSNPSIqPag6FhaolRrplRcbcgtO7TBlkI9ZIi3roIFrO6bgjYArhmPp0q5XCOas; pt_pin=jd_5b70fb199971f;',
     'feifeiba--15801891357--311638': 'pt_key=AAJihce5ADBHliVZG_O-PsrZ6tznHblZagxdbBQzW1vY1W_-X0DFlPnKLRVvTxpJQ2Mv55adF50; pt_pin=jd_4ec5358c7990f;',
