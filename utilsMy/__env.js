@@ -39,7 +39,7 @@ const envList = {
   jd_cjhy_activityId: 'ec9db5925e1844c7b25adbc418fc0f0e',
   jd_cjhy_activityUrl: 'https://cjhydz-isv.isvjcloud.com',
   jd_fxyl_activityId: '31cb3868a5f04dac86337cf4b242a28e',
-  jd_wdz_activityId: '25f43d1333844ccc97a20bce2ee2fb90',
+  jd_wdz_activityId: '08ec1d23a7c8415fa9cfc128b30df9a5',
   jd_wdz_activityUrl: 'https://cjhydz-isv.isvjcloud.com',
   JD_Lottery: 'aa6afd716cda497ab83d3f452443ecf6',
   JD_JOYOPEN: '11f663b79e7c48c08cc6b93cd61b0825',
