@@ -54,13 +54,13 @@
 # 京东
 11 1,20 * * * /usr/local/bin/node /home/data/KR/jd_cash_windfgg.js
 10 9,12,16,20,23 * * * /usr/local/bin/node /home/data/KR/jd_bean_change_pro.js
-23 1,6,15,21 * * * /usr/local/bin/node /home/data/KR/jd_bean_home.js
+#23 1,6,15,21 * * * /usr/local/bin/node /home/data/KR/jd_bean_home.js
 6 23 * * * /usr/local/bin/node /home/data/KR/jd_bean_info.js
 0 0,18 * * * /usr/local/bin/node /home/data/KR/jd_bean_sign.js
 20 14 * * * /usr/local/bin/node /home/data/KR/jd_beauty.js
 10 0,5 * * * /usr/local/bin/node /home/data/KR/jd_cash_wx.js
 6 0,16,22 * * * /usr/local/bin/node /home/data/KR/jd_club_lottery.js
-18 7 * * * /usr/local/bin/node /home/data/KR/jd_ddnc_farmpark.js
+18 7,18 * * * /usr/local/bin/node /home/data/KR/jd_ddnc_farmpark.js
 13 0,20 * * * /usr/local/bin/node /home/data/KR/jd_dpqd.js
 20,40 23 * * * /usr/local/bin/node /home/data/KR/jd_duobao.js
 13 7 * * * /usr/local/bin/node /home/data/KR/jd_dwapp.js
@@ -96,7 +96,7 @@
 10 0 * * * /usr/local/bin/node /home/data/KR/jd_jin_tie.js
 40 0,21 * * * /usr/local/bin/node /home/data/KR/jd_jdzz.js
 30 6 * * * /usr/local/bin/node /home/data/KR/jd_goodMorning.js
-2 0,11 * * * /usr/local/bin/node /home/data/KR/jd_desire.js
+#2 0,11 * * * /usr/local/bin/node /home/data/KR/jd_desire.js
 40 1 * * * /usr/local/bin/node /home/data/KR/jd_ry.js
 13 1,22 * * * /usr/local/bin/node /home/data/KR/jd_gold_creator.js
 10 3 * * * /usr/local/bin/node /home/data/KR/jd_shop.js
