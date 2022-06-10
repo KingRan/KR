@@ -30,7 +30,7 @@ const envList = {
   joyTask: [],
   joyNotRun: ['jd_fMOTUvgIPZGX'],
   ZJD_OPEN: 20,
-  jd_zdjr_activityId: '',
+  jd_zdjr_activityId: 'c89d2276243d4ad88a4c53507410461c',
   jd_zdjr_activityUrl: '',
   jd_wxSecond_activityId: '003dfd01d07b468887a9e53f395822bd',
   jd_wxCollectCard_activityId: '',
