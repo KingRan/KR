@@ -66,7 +66,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
 
     }
   }
-if ($.isNode() && allMessage) {
+if ($.isNode() && allMessage && new Date().getHours() > 20) {
         await notify.sendNotify(`${$.name}`, `${allMessage}` )
     }
 })()

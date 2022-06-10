@@ -31,7 +31,7 @@ if (process.env.yqm) {
 if (process.env.zdtx) {
     zdtx = process.env.zdtx;
 }
-let helpAuthorFlag = true;//是否助力作者SH  true 助力，false 不助力
+let helpAuthorFlag = false;//是否助力作者SH  true 助力，false 不助力
 let helpAuthorInfo = []
 
 if ($.isNode()) {
