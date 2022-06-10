@@ -1,25 +1,25 @@
 /*
-6.10~6.20 心尖好物 618拔草时刻
+6.10~6.20 为热爱选择 一起618
 开卡脚本,一次性脚本
 
 
 第一个账号助力作者 其他依次助力CK1
 第一个CK失效会退出脚本
 ————————————————
-入口：[ 6.10~6.20 心尖好物 618拔草时刻 ]
+入口：[ 6.10~6.20 为热爱选择 一起618 ]
 
 请求太频繁会被黑ip
-过10分钟再执行
+请更换IP后再执行脚本
 
-cron:57 0 10-20 6 *
+cron:40 10 11-20 6 *
 ============Quantumultx===============
 [task_local]
-#6.10~6.20 心尖好物 618拔草时刻
-57 0 10-20 6 * jd_opencardL185.js, tag=6.10~6.20 心尖好物 618拔草时刻, enabled=true
+#6.10~6.20 为热爱选择 一起618
+40 10 11-20 6 * jd_opencardL186.js, tag=6.10~6.20 为热爱选择 一起618, enabled=true
 
 */
 
-const $ = new Env('6.10~6.20 心尖好物 618拔草时刻')
+const $ = new Env('6.10~6.20 为热爱选择 一起618')
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 
@@ -35,6 +35,8 @@ if ($.isNode()) {
 } else {
   cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
+let opencard_draw = "0"
+opencard_draw = $.isNode() ? (process.env.opencard_draw ? process.env.opencard_draw : opencard_draw) : ($.getdata('opencard_draw') ? $.getdata('opencard_draw') : opencard_draw);
 allMessage = ""
 message = ""
 $.hotFlag = false
@@ -49,10 +51,10 @@ let activityCookie =''
     });
     return;
   }
-  $.activityId = "dzlhkke163a6e9a2514a0ca481942d"
-  $.shareUuid = "97c83acf403a477d8fab9f8886ddf28d"
+  $.activityId = "dzlhkkd1304d0fa8d97c17d8423853"
+  $.shareUuid = "a256b5fbb7584397ab9523118a66c2eb"
   console.log(`入口:\nhttps://lzdz1-isv.isvjcloud.com/dingzhi/customized/common/activity?activityId=${$.activityId}&shareUuid=${$.shareUuid}`)
-  let shareUuidArr = ["97c83acf403a477d8fab9f8886ddf28d","6b8c62433e70412eb5dbbd234a9451e2","35d6ac8e5c424d22bb9801a10ab24472"]
+  let shareUuidArr = ["a256b5fbb7584397ab9523118a66c2eb","b96701bdfe234fdc9cc74a1d4218ae93","f22ca181d8344840a77c988c1335b3bd"]
   let s = Math.floor((Math.random()*3))
   let n = 0
   n = Math.floor((Math.random()*shareUuidArr.length))
@@ -71,13 +73,13 @@ let activityCookie =''
       console.log(`\n\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
       await getUA()
       await run();
-	  await $.wait(3000)
+			await $.wait(3000)
       if(i == 0 && !$.actorUuid) break
       if($.outFlag || $.activityEnd) break
     }
   }
   if($.outFlag) {
-    let msg = '此ip已被限制，请过10分钟后再执行脚本'
+    let msg = '此ip已被限制，请更换IP后再执行脚本'
     $.msg($.name, ``, `${msg}`);
     if ($.isNode()) await notify.sendNotify(`${$.name}`, `${msg}`);
   }
@@ -112,7 +114,7 @@ async function run() {
       return
     }
     if($.outFlag){
-      console.log('此ip已被限制，请过10分钟后再执行脚本\n')
+      console.log('此ip已被限制，请更换IP后再执行脚本\n')
       return
     }
     await takePostRequest('getSimpleActInfoVo');
@@ -154,7 +156,7 @@ async function run() {
           for (let i = 0; i < Array(5).length; i++) {
             if (i > 0) console.log(`第${i}次 重新开卡`)
             await joinShop()
-			await $.wait(500)
+						await $.wait(500)
             if ($.errorJoinShop.indexOf('活动太火爆，请稍后再试') == -1) {
               break
             }
@@ -168,7 +170,7 @@ async function run() {
           await takePostRequest('activityContent');
           await takePostRequest('drawContent');
           await takePostRequest('checkOpenCard');
-          await $.wait(parseInt(Math.random() * 2000 + 1000, 10))
+          await $.wait(1000)
         }
       }
     }else{
@@ -197,26 +199,30 @@ async function run() {
       await takePostRequest('activityContent');
     }
     console.log(`${$.score}值`)
+    if(opencard_draw+"" !== "0"){
       $.runFalag = true
       let count = parseInt($.score/100)
+      opencard_draw = parseInt(opencard_draw, 10)
+      if(count > opencard_draw) count = opencard_draw
       console.log(`抽奖次数为:${count}`)
       for(m=1;count--;m++){
         console.log(`第${m}次抽奖`)
         await takePostRequest('抽奖');
         if($.runFalag == false) break
         if(Number(count) <= 0) break
-        if(m >= 2){
+        if(m >= 10){
           console.log("抽奖太多次，多余的次数请再执行脚本")
           break
         }
         await $.wait(parseInt(Math.random() * 2000 + 2000, 10))
       }
+    }else console.log('如需抽奖请设置环境变量[opencard_draw]为"3" 3为次数');
     
     await $.wait(parseInt(Math.random() * 1000 + 2000, 10))
     //await takePostRequest('getDrawRecordHasCoupon');
     //await takePostRequest('getShareRecord');
     if($.outFlag){
-      console.log('此ip已被限制，请过10分钟后再执行脚本\n')
+      console.log('此ip已被限制，请更换IP后再执行脚本\n')
       return
     }
     console.log($.actorUuid)
@@ -225,7 +231,6 @@ async function run() {
       $.shareUuid = $.actorUuid
       console.log(`后面的号都会助力:${$.shareUuid}`)
     }
-    await $.wait(parseInt(Math.random() * 1000 + 5000, 10))
       if($.index % 3 == 0) console.log('休息一下，别被黑ip了\n可持续发展')
       if($.index % 3 == 0) await $.wait(parseInt(Math.random() * 5000 + 20000, 10))
   } catch (e) {
@@ -348,7 +353,7 @@ async function takePostRequest(type) {
           if (err) {
             if(resp && typeof resp.statusCode != 'undefined'){
               if(resp.statusCode == 493){
-                console.log('此ip已被限制，请过10分钟后再执行脚本\n')
+                console.log('此ip已被限制，请更换IP后再执行脚本\n')
                 $.outFlag = true
               }
             }
@@ -673,7 +678,7 @@ function getCk() {
         if (err) {
           if(resp && typeof resp.statusCode != 'undefined'){
             if(resp.statusCode == 493){
-              console.log('此ip已被限制，请过10分钟后再执行脚本\n')
+              console.log('此ip已被限制，请更换IP后再执行脚本\n')
               $.outFlag = true
             }
           }

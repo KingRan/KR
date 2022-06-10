@@ -163,15 +163,11 @@ async function run() {
           await takePostRequest('activityContent');
           await takePostRequest('drawContent');
           await takePostRequest('checkOpenCard');
-          await $.wait(parseInt(Math.random() * 2000 + 3000, 10))
+          await $.wait(parseInt(Math.random() * 2000 + 1000, 10))
         }
       }
     }else{
       console.log('已全部开卡')
-      if($.index >= 12) {
-        await $.wait(parseInt(Math.random() * 2000 + 5000, 10))
-        return
-      }
     }
     
     $.log("关注: " + $.followShop)
@@ -188,7 +184,7 @@ async function run() {
     if(!$.followSku && !$.outFlag){
         flag = true
         await takePostRequest('addSku');
-        await $.wait(parseInt(Math.random() * 2000 + 5000, 10))
+        await $.wait(parseInt(Math.random() * 2000 + 1000, 10))
     }
     if(flag){
       await takePostRequest('activityContent');
@@ -220,7 +216,7 @@ async function run() {
       $.shareUuid = $.actorUuid
       console.log(`后面的号都会助力:${$.shareUuid}`)
     }
-    await $.wait(parseInt(Math.random() * 2000 + 5000, 10))
+    await $.wait(parseInt(Math.random() * 2000 + 2000, 10))
       if($.index % 3 == 0) console.log('休息一下，别被黑ip了\n可持续发展')
       if($.index % 3 == 0) await $.wait(parseInt(Math.random() * 5000 + 18000, 10))
   } catch (e) {
