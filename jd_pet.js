@@ -298,7 +298,7 @@ async function masterHelpInit() {
                     str += (item.nickName || "匿名用户") + '，';
                 }
             })
-            message += `【助力您的好友】${str}\n`;
+            message += `【助力您的好友】${res.result.masterHelpPeoples.length}\n`;
         }
     }
 }
