@@ -11,11 +11,11 @@
 请求太频繁会被黑ip
 请更换IP后再执行脚本
 
-cron:40 10 11-20 6 *
+cron:10 0 11-20 6 *
 ============Quantumultx===============
 [task_local]
 #6.10~6.20 为热爱选择 一起618
-40 10 11-20 6 * jd_opencardL186.js, tag=6.10~6.20 为热爱选择 一起618, enabled=true
+10 0 11-20 6 * jd_opencardL186.js, tag=6.10~6.20 为热爱选择 一起618, enabled=true
 
 */
 
