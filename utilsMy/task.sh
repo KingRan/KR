@@ -11,7 +11,7 @@
 #15 0,1 * * * /usr/local/bin/node /home/data/jd_scripts/jd_zjd.js >> /home/data/logs/jd_script_node/jd_zjd.log 2>&1
 10 20 * * * /usr/local/bin/node /home/data/jd_scripts/jd_checkCookie.js >> /home/data/logs/jd_script_node/jd_checkCookie.log 2>&1
 10 2 * * * /usr/local/bin/node /home/data/jd_scripts/jd_dwapp.js
-10 7,18 * * * /usr/local/bin/node /home/data/jd_scripts/jd_cash_wechat.js >> /home/data/logs/jd_script_node/jd_cash_wechat.log 2>&1
+10 14,18 * * * /usr/local/bin/node /home/data/jd_scripts/jd_cash_wechat.js >> /home/data/logs/jd_script_node/jd_cash_wechat.log 2>&1
 
 
 
