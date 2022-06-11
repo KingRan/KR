@@ -36,7 +36,7 @@ cron:
 */
 let guaopencard_addSku = 'true' // 加购
 let guaopencard = 'true' // 执行
-let guaopenwait = 10 // 等待（秒）
+let guaopenwait = 40 // 等待（秒）
 let guaopencard_draw = 50 // 抽奖次数
 
 const $ = new Env('6.8~6.18 大牌联合 好物焕新季')
