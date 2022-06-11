@@ -48,6 +48,8 @@
 5 10 * * * /usr/local/bin/node /home/data/KR/jd_wxSecond.js
 5 10 * * * /usr/local/bin/node /home/data/KR/jd_wxCollectCard.js
 18 20 * * * /usr/local/bin/node /home/data/KR/jd_teamMN.js
+20 4,16 * * * /usr/local/bin/node /home/data/KR/jd_carplay.js
+33 7 * * * /usr/local/bin/node /home/data/KR/jd_618lottery.js
 
 
 
@@ -89,8 +91,6 @@
 5 2,18 * * * /usr/local/bin/node /home/data/KR/jd_plantBean_help.js
 10 3,6-18/6 * * * /usr/local/bin/node /home/data/KR/jd_pet.js
 7 4,15 * * * /usr/local/bin/node /home/data/KR/jd_pet_help.js
-1 8 * * * /usr/local/bin/node /home/data/KR/jd_mpdzcar.js
-1 6,10,12 * * * /usr/local/bin/node /home/data/KR/jd_mpdzcar_game.js
 10 0 * * * /usr/local/bin/node /home/data/KR/jd_kd.js
 7 11 * * * /usr/local/bin/node /home/data/KR/jd_live.js
 10 0 * * * /usr/local/bin/node /home/data/KR/jd_jin_tie.js
