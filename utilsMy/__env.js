@@ -38,7 +38,7 @@ const envList = {
   WindfggToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY1NDQyMTg4NiwianRpIjoiMWExZGYxYTYtMWIxOS00MGI5LWE1YWItZjBlZjk1NTk4MzE5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjE4MTAxNTYzNDAiLCJuYmYiOjE2NTQ0MjE4ODYsImV4cCI6MTY4NTk1Nzg4Nn0.EUVHSeOmhO4VTvf1Y-Gy-IDT_aOtNZPAokgBsl5q2A8',
   jd_cjhy_activityId: 'd5b07b631ce440ca8aa98da3dee967ab',
   jd_cjhy_activityUrl: 'https://cjhydz-isv.isvjcloud.com',
-  jd_fxyl_activityId: '3606435cda984aca83484628e827cab2',
+  jd_fxyl_activityId: 'f2057c29ba84427688683a4abc170b96',
   jd_wdz_activityId: '08ec1d23a7c8415fa9cfc128b30df9a5',
   jd_wdz_activityUrl: 'https://cjhydz-isv.isvjcloud.com',
   JD_Lottery: 'aa6afd716cda497ab83d3f452443ecf6',
