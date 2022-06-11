@@ -2,6 +2,7 @@
 
 50 23 * * * find /home/data/logs/jd_script_node -name '*.log' | grep -v 'jd_get_share_code.log' | xargs rm -rf
 52 23 * * * find /home/data/KR -name 'Fruit_ShareCache.json' | xargs rm -rf
+52 23 * * * find /root -name 'Fruit_ShareCache.json' | xargs rm -rf
 
 # jdhelloworld
 #4 0,18 * * * /usr/local/bin/node /home/data/jd_scripts/jd_wechat_sign.js >> /home/data/logs/jd_script_node/jd_wechat_sign.log 2>&1
