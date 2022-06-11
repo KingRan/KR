@@ -49,7 +49,8 @@ const envList = {
   DPLHTY: '04c1bf1191d044c6ae059e_22040802',
   opencard_toShop: 'true',
   opencard_draw: 55,
-  opencard_shop: 20
+  opencard_shop: 20,
+  jd_wxCartKoi_activityId: 'cdddeb5919844be68f2448b0531218e9'
 }
 
 function setEnv() {
