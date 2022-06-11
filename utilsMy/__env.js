@@ -47,9 +47,6 @@ const envList = {
   jd_drawCenter_activityId: '2af17a4a89fa46979775d34e78635d04',
   SEVENDAY_LIST: 'b78817d3730b48188380914df178c30c',
   DPLHTY: '04c1bf1191d044c6ae059e_22040802',
-  opencard_toShop: 'true',
-  opencard_draw: 55,
-  opencard_shop: 20,
   jd_wxCartKoi_activityId: 'cdddeb5919844be68f2448b0531218e9'
 }
 
