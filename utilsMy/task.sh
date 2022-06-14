@@ -50,7 +50,6 @@
 5 10 * * * /usr/local/bin/node /home/data/KR/jd_wxCollectCard.js
 18 20 * * * /usr/local/bin/node /home/data/KR/jd_teamMN.js
 20 4,16 * * * /usr/local/bin/node /home/data/KR/jd_carplay.js
-33 7 * * * /usr/local/bin/node /home/data/KR/jd_618lottery.js
 
 
 
