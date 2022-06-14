@@ -32,7 +32,7 @@ const envList = {
   ZJD_OPEN: 20,
   jd_zdjr_activityId: '77e1485b55c3409ea1eb2b8c0e1d0333',
   jd_zdjr_activityUrl: '',
-  jd_wxSecond_activityId: '003dfd01d07b468887a9e53f395822bd',
+  jd_wxSecond_activityId: '709e317fe83841f9986b85a1669aea6c',
   jd_wxCollectCard_activityId: '',
   tytpacketId: '',
   WindfggToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY1NDQyMTg4NiwianRpIjoiMWExZGYxYTYtMWIxOS00MGI5LWE1YWItZjBlZjk1NTk4MzE5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjE4MTAxNTYzNDAiLCJuYmYiOjE2NTQ0MjE4ODYsImV4cCI6MTY4NTk1Nzg4Nn0.EUVHSeOmhO4VTvf1Y-Gy-IDT_aOtNZPAokgBsl5q2A8',
