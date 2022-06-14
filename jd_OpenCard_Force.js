@@ -12,7 +12,7 @@
 ## 最小入会值 （默认10）
 //export OPENCARD_BEAN=""
 
-cron:10 10 10 10 *
+cron:6 6 6 6 *
 ============Quantumultx===============
 [task_local]
 #入会开卡领取礼包(通用)

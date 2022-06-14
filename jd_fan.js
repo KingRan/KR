@@ -23,9 +23,7 @@ if ($.isNode()) {
         ...$.toObj($.getdata("CookiesJD") || "[]").map((item) => item.cookie)].filter((item) => !!item);
 }
 let activityList = [
-    {'id':'cebd38c28cf0468c8082082eebde4c32','endTime':1656626274000},//
-		{'id':'c88ffa4a17b04cc994a6e66f161471','endTime':1656626274000},//
-    {'id':'4f49c21967e24e62aa60efc28b015c82','endTime':1656626274000},//
+    {'id':'20f3bf50733f4b9bbd333b3705d14272','endTime':1656626274000},//
 		
 ];
 !(async()=>{
