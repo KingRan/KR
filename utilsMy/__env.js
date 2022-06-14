@@ -47,9 +47,9 @@ const envList = {
   jd_drawCenter_activityId: '2af17a4a89fa46979775d34e78635d04',
   SEVENDAY_LIST: 'b78817d3730b48188380914df178c30c',
   DPLHTY: '04c1bf1191d044c6ae059e_22040802',
-  jd_wxCartKoi_activityId: 'cdddeb5919844be68f2448b0531218e9',
+  jd_wxCartKoi_activityId: '4b6c4fd56173472ab885b93482c01737',
   M_WX_ADD_CART_URL: 'https://lzkj-isv.isvjcloud.com/wxCollectionActivity/activity2/b252840a3f9a426480f0e0d7df9b3942?activityId=b252840a3f9a426480f0e0d7df9b3942',
-  WXGAME_ACT_ID: '32038e10b143463e901024f86965a6aa'
+  WXGAME_ACT_ID: '32038e10b143463e901024f86965a6aa',
 }
 
 function setEnv() {
