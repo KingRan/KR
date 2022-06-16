@@ -54,7 +54,7 @@
 
 
 # 京东
-11 1,20 * * * /usr/local/bin/node /home/data/KR/jd_cash_windfgg.js
+11 1,20 * * * /usr/local/bin/node /home/data/KR/jd_cash_windfg.js
 10 9,12,16,20,23 * * * /usr/local/bin/node /home/data/KR/jd_bean_change_pro.js
 #23 1,6,15,21 * * * /usr/local/bin/node /home/data/KR/jd_bean_home.js
 6 23 * * * /usr/local/bin/node /home/data/KR/jd_bean_info.js
@@ -74,7 +74,6 @@
 3 1,11 * * * /usr/local/bin/node /home/data/KR/jd_m_sign.js
 2 6 * * 5 /usr/local/bin/node /home/data/KR/jd_xs_zzl.js
 1 15 25-31,1-18 5,6 * /usr/local/bin/node /home/data/KR/jd_xiaomi.js
-0 10 * * * /usr/local/bin/node /home/data/KR/jd_wyw.js
 18 0,2,20 * * * /usr/local/bin/node /home/data/KR/jd_wish.js
 18 21 * * * /usr/local/bin/node /home/data/KR/jd_unsubscriLive.js
 38 21 * * * /usr/local/bin/node /home/data/KR/jd_unsubscribe.js
