@@ -44,7 +44,7 @@ const envList = {
   JD_Lottery: 'aa6afd716cda497ab83d3f452443ecf6',
   JD_JOYOPEN: '11f663b79e7c48c08cc6b93cd61b0825',
   VENDER_ID: '1000411104',
-  jd_drawCenter_activityId: '2af17a4a89fa46979775d34e78635d04',
+  jd_drawCenter_activityId: '9606059f01494afcb6f695691a9b30ed',
   SEVENDAY_LIST: 'b78817d3730b48188380914df178c30c',
   DPLHTY: '94dae46deea14cd0aef6b79972_220612',
   jd_wxCartKoi_activityId: '7ccae8e594024b649e36a0740077b2a0',
