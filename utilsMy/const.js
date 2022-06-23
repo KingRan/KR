@@ -21,7 +21,7 @@ const COOKIES = {
     'chenchen--18321772130--414247': 'pt_key=AAJipuWrADCS72VXtmz2eznNc7yPqrMX9UXXbFoazBio2YWuedE-2379w1L3R8Z0kxMGTxzqs94; pt_pin=jd_5019920a9eca3;',
     'weili--18516151228--453021': 'pt_key=AAJijkibADAa4LMBsFwmc8TqzV63rCPcC--AWbV_0tEc818K4r0aqnToV5wnODAxVINLE6XaN6w; pt_pin=%E5%A4%8F%E5%A4%9C%E5%B8%8C;',
     'chensong--15900769139--424219': 'pt_key=AAJirLDKADC4ACXF7PO-27FuCwCHIlszIOMar513IOkMhKBJbSb6jMfhvRf14XfLL0zOenXj9Gg; pt_pin=ninetypoints;',
-    // 'yaqing--18875015529--50920X': 'pt_key=AAJii1MOADAD-cFQ95hpiBFl2QQjI6DRFzzFkE7vrVu-4JySl7q_CKj0QgFbqRkFDJvKlrgPfDk; pt_pin=%E9%BB%84%E4%BA%9A%E7%90%B4July;',
+    'yaqing--18875015529--50920X': 'pt_key=AAJis9VkADD9_QV8u7EmgnwmBumScRO9CnqKRuq7splB-z7rRrz_ui_Lu-o_tLVXxKKacyWs5XI; pt_pin=%E9%BB%84%E4%BA%9A%E7%90%B4July;',
     'omi--13917653303--312525': 'pt_key=AAJioW3zADAvg-C8fAKVyyxxbbqmdxBV4Ph-K3vJ7vERqxFkXFbeEGZRxYN_8o7WBXKYUddOE24; pt_pin=omiling;',
     'songfan2--18221816038--425113': 'pt_key=AAJiowXNADDVflYTOmcvImZqcvgoZkl6cgpgAY5g0-Az96xSIw5b74tjp7Xg5-WmOUBjt7xQmoM; pt_pin=jd_45b7686c80a27;',
     'songfan4--13774179686--420620': 'pt_key=AAJipXm-ADATgU7yXh9MXGeV7McQLBndG9X3aziLvTTWT8En78pzc4eCc5pt6om8-stD40-_JpE; pt_pin=jd_OZSaXyfdZDNC;',
