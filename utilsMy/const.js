@@ -37,9 +37,8 @@ const COOKIES = {
     'xiaozhi2--13585662340--366032': 'pt_key=AAJipX3HADByZQ_CafuN4JM50Cwf9azw2UYXYM-id7kY0RcjbyQLVoysJngqkcJGriLHkfEKdUA; pt_pin=jd_BNfbGjLdEygD;',
     'xiaoshi--15601879183--32642X': 'pt_key=AAJirZG_ADC-YEsL0tbtTvUS69Y5cpZqWAYkmOkhNlOoiprLCxvy3y_AAKKIA-E9rKfnssfnV4Q; pt_pin=flute23on;',
     'wanghailong--18626252572--323128': 'pt_key=AAJird_nADAXN3nxmnmmsAPFROeFvqwUkHJyIxtt3pxdGSdmxsFOtKViLHRfJxW3DxiNiAweUBY; pt_pin=%E6%B0%B4%E5%A4%95123;',
-    // 'wanghailong2--17612166926--323128': 'pt_key=AAJihhK6ADDDka33z7l-DoXsTYHR9-_-_QjCAZEba4kORaRMVJEx12-uOY6TnjZ76Sjqy3tECDc; pt_pin=jd_IyhNVkQgzDCW;',
     'yizhou--13916979981--310534': 'pt_key=AAJisSXyADBfsBC7ugeaq2k-kqmVInmVx4csStHYRuCXiKn8kkR0jiKBBe4apkpL9hUzWlkTqIw; pt_pin=13916979981_p;',
-    // 'yizhou2--13817965380--31504X': 'pt_key=AAJiiQU-ADBA1hiE8Rg08qSAVVDWxZ2UfLiEmohq3aXzp_461xGTUOSJbB-dN9S3UVYKwQWXlYY; pt_pin=%E9%A6%99%E7%8C%AA%E5%AE%9D;',
+    'yizhou2--13817965380--31504X': 'pt_key=AAJis-L7ADDFd6DsSQTXvVZ0ElwVWkI76U_KffWW8u8mk7QqozXD3zkxY9ZH-as-3yrV42QUw3s; pt_pin=%E9%A6%99%E7%8C%AA%E5%AE%9D;',
     'jiayun--15202170640--410822': 'pt_key=AAJipLjAADDiHQFPtEAES_LASTzjDHDM0EBgfJnp8CKs4YjtVNi9Gr2vw9qG9xiBLbw0lJ33Nq0; pt_pin=jd_50b661132d259;',
     'lianhua--13918737840--323573': 'pt_key=AAJijkkSADAcUsXsRMETcYWhGNSy57xObp6tA067aBaXBRBfU7cu-6ZaWGZsuboe9ZQbgbY2fNM; pt_pin=lianhua891124;',
     'zhenyu--18207182483--376775': 'pt_key=AAJisWQIADBbbCWEz3V--LIkaOAwhhJputA39H31eVYaVgMp9O-mHjN0J5nEGst81m6w8QYdbh8; pt_pin=13016482674_p;',
@@ -54,6 +53,7 @@ const COOKIES = {
     'feifeiba--15801891357--311638': 'pt_key=AAJir-tNADCHHDOKp9KUiWi7HG6Bgm7IKeXXrIYbOXfC8ju6NNLg-w2WwvccE-EFX78kfsSqlcs; pt_pin=jd_4ec5358c7990f;',
     'songfan3--15800664336--420667': 'pt_key=AAJiqzQxADB-K9eDXJNxhiQy5OD2xhxdAHCmvH-9VLJHalJBWJ_wnWwwh-IxgGavONWOx7DKJfo; pt_pin=jd_58b8a58a68265;',
     // '橙子2--13697958307--364863': 'pt_key=AAJihcU5ADDq4l3Tce09iewpZdEgU1ZgDq7SfdIyivcw0lDgj7pUKJLSmYD6HfwmHMb9hBIFXA4; pt_pin=jd_PgSeKEbOKiDO;',
+    // 'wanghailong2--17612166926--323128': 'pt_key=AAJihhK6ADDDka33z7l-DoXsTYHR9-_-_QjCAZEba4kORaRMVJEx12-uOY6TnjZ76Sjqy3tECDc; pt_pin=jd_IyhNVkQgzDCW;',
     // 'hupeng3--13479004221--360919': 'pt_key=AAJib3EnADCN19z0vhTy_liDZDNw9YiKjnSUc02qYjqvqiEZ309QTCQu0u59IjVCvX2sGkKkE2w; pt_pin=lei9784495;',
     // 'hupeng4--18279079319--36562X': 'pt_key=AAJib3H3ADDgK1HyN32c0-tuKwQ1Np0FvMtpY8fSBR08aleI_uf1qKsS4cPRyWVU4c1XNiLbkOE; pt_pin=jd_kGFAvwvsJvDt;',
 }
