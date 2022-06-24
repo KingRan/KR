@@ -257,7 +257,7 @@ function taskUrl(function_id, body, isCommon) {
             'User-Agent': `jdapp;iPhone;9.5.4;13.6;${$.UUID};network/wifi;ADID/${$.ADID};model/iPhone10,3;addressid/0;appBuild/167668;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1`,
             Connection: 'keep-alive',
             Referer: $.activityUrl,
-            Cookie: $.cookie
+            Cookie: cookie
         },
         body: body
 
