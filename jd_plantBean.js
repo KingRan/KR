@@ -41,7 +41,6 @@ let roundList = [];
 let awardState = '';//上期活动的京豆是否收取
 let randomCount = $.isNode() ? 20 : 5;
 let num;
-let llerror=false;
 $.newShareCode = [];
 let NowHour = new Date().getHours();
 let lnrun = 0;
@@ -94,8 +93,11 @@ async function jdPlantBean() {
   try {
     console.log(`获取任务及基本信息`)
     await plantBeanIndex();
-    if(llerror)
-		return;
+    if ($.plantBeanIndexResult.errorCode === 'PB101') {
+      console.log(`\n活动太火爆了，还是去买买买吧！\n`)
+      return
+    }
+    if ($.plantBeanIndexResult && $.plantBeanIndexResult.code === '0' && $.plantBeanIndexResult.data) {
     for (let i = 0; i < $.plantBeanIndexResult.data.roundList.length; i++) {
       if ($.plantBeanIndexResult.data.roundList[i].roundState === "2") {
         num = i
@@ -103,11 +105,9 @@ async function jdPlantBean() {
       }
     }
     // console.log(plantBeanIndexResult.data.taskList);
-    if ($.plantBeanIndexResult && $.plantBeanIndexResult.code === '0' && $.plantBeanIndexResult.data) {
       const shareUrl = $.plantBeanIndexResult.data.jwordShareInfo.shareUrl
       $.myPlantUuid = getParam(shareUrl, 'plantUuid')
       console.log(`\n【京东账号${$.index}（${$.UserName}）的${$.name}好友互助码】${$.myPlantUuid}\n`);
-      jdPlantBeanShareArr.push($.myPlantUuid)
 
       roundList = $.plantBeanIndexResult.data.roundList;
       currentRoundId = roundList[num].roundId;//本期的roundId
@@ -175,8 +175,6 @@ async function doGetReward() {
 }
 async function doCultureBean() {
   await plantBeanIndex();
-	if(llerror)
-		return;
   if ($.plantBeanIndexResult && $.plantBeanIndexResult.code === '0' && $.plantBeanIndexResult.data) {
     const plantBeanRound = $.plantBeanIndexResult.data.roundList[num]
     if (plantBeanRound.roundState === '2') {
@@ -407,8 +405,6 @@ async function doTask() {
 function showTaskProcess() {
   return new Promise(async resolve => {
     await plantBeanIndex();
-		if(llerror)
-		return;
 	  if ($.plantBeanIndexResult && $.plantBeanIndexResult.code === '0' && $.plantBeanIndexResult.data) {
     $.taskList = $.plantBeanIndexResult.data.taskList;
     if ($.taskList && $.taskList.length > 0) {
@@ -533,39 +529,7 @@ async function helpShare(plantUuid) {
   console.log(`助力结果的code:${$.helpResult && $.helpResult.code}`);
 }
 async function plantBeanIndex() {
-	llerror=false;
-    $.plantBeanIndexResult = await request('plantBeanIndex'); //plantBeanIndexBody
-    if ($.plantBeanIndexResult.errorCode === 'PB101') {
-        console.log(`\n活动太火爆了，还是去买买买吧！\n`)
-		llerror=true;
-        return
-    }
-    if ($.plantBeanIndexResult.errorCode) {
-        console.log(`获取任务及基本信息出错，10秒后重试\n`)
-        await $.wait(10000);
-        $.plantBeanIndexResult = await request('plantBeanIndex'); 
-        if ($.plantBeanIndexResult.errorCode === 'PB101') {
-            console.log(`\n活动太火爆了，还是去买买买吧！\n`)
-			llerror=true;
-            return
-        }
-    }
-    if ($.plantBeanIndexResult.errorCode) {
-        console.log(`获取任务及基本信息出错，30秒后重试\n`)
-        await $.wait(30000);
-        $.plantBeanIndexResult = await request('plantBeanIndex'); 
-        if ($.plantBeanIndexResult.errorCode === 'PB101') {
-            console.log(`\n活动太火爆了，还是去买买买吧！\n`)
-			llerror=true;
-            return
-        }
-    }
-    if ($.plantBeanIndexResult.errorCode) {
-        console.log(`获取任务及基本信息失败，活动异常，换个时间再试试吧....`)
-        console.log("错误代码;" + $.plantBeanIndexResult.errorCode)
-		llerror=true;
-        return
-    }
+  $.plantBeanIndexResult = await request('plantBeanIndex');//plantBeanIndexBody
 }
 function requireConfig() {
   return new Promise(resolve => {
