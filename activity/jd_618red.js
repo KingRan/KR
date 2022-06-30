@@ -58,8 +58,8 @@ let appId, fingerprint, token, enCryptMethodJD;
     }
 })().catch((e) => { $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '') }).finally(() => { $.done(); })
 
-async function main(ck, code = 'Jt4KpgH') {
-    const codes = ['Jt4KpgH','lMCi96W']
+async function main(ck, code = '') {
+    const codes = ['']
     code = $.CODE618 ? $.CODE618 : codes[random(0, codes.length)]
     //console.log(code)
     let userName = decodeURIComponent(ck.match(/pt_pin=([^; ]+)(?=;?)/) && ck.match(/pt_pin=([^; ]+)(?=;?)/)[1])
