@@ -35,9 +35,15 @@ if ($.isNode()) {
 } else {
   cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
+let jdWindfggToken = '';
+jdWindfggToken = $.isNode() ? (process.env.WindfggToken ? process.env.WindfggToken : `${jdWindfggToken}`) : ($.getdata('WindfggToken') ? $.getdata('WindfggToken') : `${jdWindfggToken}`);
 const JD_API_HOST = 'https://api.m.jd.com/';
 let agid = [], pageId, encodeActivityId, paginationFlrs, activityId
 let allMessage = '';
+if (!jdWindfggToken) {
+	 console.log('\n请前往 https://t.me/wind_fgg   获取Token\n请填写Windfgg获取的Token,变量是WindfggToken');
+	 return;
+}
 !(async () => {
   if (!cookiesArr[0]) {
     $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
@@ -583,40 +589,81 @@ function taskPostUrl(functionId, body) {
     }
   }
 }
-function getSign(functionId, body) {
-  return new Promise(async resolve => {
-    let data = {
-      functionId,
-      body: JSON.stringify(body),
-      "client":"apple",
-      "clientVersion":"10.3.0"
-    }
-    let HostArr = ['jdsign.cf', 'signer.nz.lu']
-    let Host = HostArr[Math.floor((Math.random() * HostArr.length))]
-    let options = {
-      url: `https://cdn.nz.lu/ddo`,
-      body: JSON.stringify(data),
-      headers: {
-        Host,
-        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
-      },
-      timeout: 30 * 1000
-    }
-    $.post(options, (err, resp, data) => {
-      try {
-        if (err) {
-          console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} getSign API请求失败，请检查网路重试`)
-        } else {
+// function getSign(functionId, body) {
+  // return new Promise(async resolve => {
+    // let data = {
+      // functionId,
+      // body: JSON.stringify(body),
+      // "client":"apple",
+      // "clientVersion":"10.3.0"
+    // }
+    // let HostArr = ['jdsign.cf', 'signer.nz.lu']
+    // let Host = HostArr[Math.floor((Math.random() * HostArr.length))]
+    // let options = {
+      // url: `https://cdn.nz.lu/ddo`,
+      // body: JSON.stringify(data),
+      // headers: {
+        // Host,
+        // "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
+      // },
+      // timeout: 30 * 1000
+    // }
+    // $.post(options, (err, resp, data) => {
+      // try {
+        // if (err) {
+          // console.log(`${JSON.stringify(err)}`)
+          // console.log(`${$.name} getSign API请求失败，请检查网路重试`)
+        // } else {
 
-        }
-      } catch (e) {
-        $.logErr(e, resp)
-      } finally {
-        resolve(data);
-      }
-    })
-  })
+        // }
+      // } catch (e) {
+        // $.logErr(e, resp)
+      // } finally {
+        // resolve(data);
+      // }
+    // })
+  // })
+// }
+function getSign(functionId, body) {
+	 var strsign = '';
+	 let data = {
+			 "fn": functionId,
+			 "body": body
+	 }
+	 return new Promise((resolve) => {
+			 let url = {
+					 url: "https://api.windfgg.cf/jd/sign",
+					 body: JSON.stringify(data),
+					 followRedirect: false,
+					 headers: {
+							 'Accept': '*/*',
+							 "accept-encoding": "gzip, deflate, br",
+							 'Content-Type': 'application/json',
+							 'Authorization': 'Bearer ' + jdWindfggToken
+					 },
+					 timeout: 30000
+			 }
+			 $.post(url, async (err, resp, data) => {
+					 try {
+							 data = JSON.parse(data);
+
+							 if (data && data.code == 200) {
+									 lnrequesttimes = data.request_times;
+									 console.log("连接Windfgg服务成功，当前Token使用次数为" + lnrequesttimes);
+									 if (data.data)
+											 strsign = data.data || '';
+									 if (strsign != '')
+											 resolve(strsign);
+							 }else if(data.code==201){
+									 console.log("签名获取失败,Token使用次数上限.");
+							 }
+					 } catch (e) {
+							 $.logErr(e,resp)
+					 } finally {
+							 resolve('');
+					 }
+			 })
+	 })
 }
 function randomString(e) {
   e = e || 32;
