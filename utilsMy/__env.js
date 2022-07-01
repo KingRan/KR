@@ -50,7 +50,8 @@ const envList = {
   jd_wxCartKoi_activityId: '7ccae8e594024b649e36a0740077b2a0',
   M_WX_ADD_CART_URL: 'https://lzkj-isv.isvjcloud.com/wxCollectionActivity/activity2/b252840a3f9a426480f0e0d7df9b3942?activityId=b252840a3f9a426480f0e0d7df9b3942',
   WXGAME_ACT_ID: '32038e10b143463e901024f86965a6aa',
-  jd_wxFansInterActionActivity_activityId: '501cfe74a1384c5c8fa789d35190f0e1'
+  jd_wxFansInterActionActivity_activityId: '501cfe74a1384c5c8fa789d35190f0e1',
+  jd_wxShopFollowActivity_activityId: '2ba10f47bc4a4ed6b1f8b70d5f28f2d1'
 }
 
 function setEnv() {
