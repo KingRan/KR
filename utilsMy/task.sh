@@ -18,7 +18,7 @@
 
 
 20 0,19 * * * /usr/local/bin/node /home/data/KR/gua_opencard175.js
-
+11 6 1-3,4-31/5 7 * /usr/local/bin/node /home/data/KR/jd_AJYX.js
 
 
 # 极速版
