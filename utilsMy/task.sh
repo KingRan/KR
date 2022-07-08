@@ -17,8 +17,8 @@
 
 
 
-20 0,19 * * * /usr/local/bin/node /home/data/KR/gua_opencard186.js
-11 6 1-3,4-31/5 7 * /usr/local/bin/node /home/data/KR/jd_AJYX.js
+30 10 * * * /usr/local/bin/node /home/data/KR/jd_yiliBaby.js
+10 10 * * * /usr/local/bin/node /home/data/KR/jd_shangou.js
 
 
 # 极速版
