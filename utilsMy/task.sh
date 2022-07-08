@@ -19,6 +19,8 @@
 
 30 10 * * * /usr/local/bin/node /home/data/KR/jd_yiliBaby.js
 10 10 * * * /usr/local/bin/node /home/data/KR/jd_shangou.js
+33 6 7-31 7 * /usr/local/bin/node /home/data/KR/jd_lanyueliang.js
+22 19 6-31 7 * /usr/local/bin/node /home/data/KR/jd_ry.js
 
 
 # 极速版
