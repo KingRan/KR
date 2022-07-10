@@ -43,6 +43,7 @@ message = ""
     });
     return;
   }
+  cookiesArr = cookiesArr.filter((item) => item.indexOf('jd_OzopTeZYkdKe') <= -1)
   for (let i = 0; i < cookiesArr.length; i++) {
     cookie = cookiesArr[i];
     if (cookie) {
