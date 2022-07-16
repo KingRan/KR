@@ -162,11 +162,11 @@ async function run() {
       for(let i of $.rewards || []){
         console.log(`类型:${i.rewardType} ${i.rewardName} ${i.limitStr} ${$.time('yyyy.MM.dd',i.couponBeginTime)}-${$.time('yyyy.MM.dd',i.couponEndTime)}`)
         if(i.rewardType != 2){
-          let msg = `【京东账号${$.index}】${$.nickName || $.UserName}\n类型:${i.rewardType} ${i.rewardName} ${i.limitStr}\n活动地址:https://3.cn/103-VBNoE`
+          let msg = `【京东账号${$.index}】${$.nickName || $.UserName}\n类型:${i.rewardType} ${i.rewardName} ${i.limitStr}\n`
           if ($.isNode()){
-            await notify.sendNotify(`${$.name}`, `${msg}`);
+            //await notify.sendNotify(`${$.name}`, `${msg}`);
           }else{
-            $.msg($.name, ``, `${msg}`);
+            //$.msg($.name, ``, `${msg}`);
           }
         }
       }
@@ -202,10 +202,10 @@ function updatefriend(id,type) {
     }
   }
   if(type == 1) $.shareArr[index].count++
-  if($.shareArr[index].count >= 3 || type == 0){
+  if($.shareArr[index].count >= 10 || type == 0){
     console.log(`助力码[${$.shareArr[index].friendPin}] 已邀请${$.shareArr[index].count}`)
     for(let i in $.shareArr){
-      if($.shareArr[i] && $.shareArr[i].count < 3){
+      if($.shareArr[i] && $.shareArr[i].count < 10){
         friendPin = $.shareArr[i].friendPin
         console.log(`更新助力码[${friendPin}] 账号${$.shareArr[i].index} 已邀请${$.shareArr[i].count}`)
         break
