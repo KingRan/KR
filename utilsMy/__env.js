@@ -20,8 +20,8 @@ const envList = {
   CFD_LOOP_SLEEPTIME: 1000*30,
   JOY_COIN_MAXIMIZE: '1',
   dlbtz: true,
-  jdPetNotNotifyList: ['lianhua891124', '%E9%A6%99%E7%8C%AA%E5%AE%9D'],
-  jdFruitNotNotifyList: ['%E5%88%98%E8%89%B3a123456', '%E9%A6%99%E7%8C%AA%E5%AE%9D'],
+  jdPetNotNotifyList: ['lianhua891124', 'jd_45b7686c80a27'],
+  jdFruitNotNotifyList: [],
   JD_JOY_PARK_RUN_MSG_TIME: [12, 16, 18, 20, 23],
   JD_JOY_PARK_RUN_ASSETS: '0.01',
   JD_JOY_PARK_RUN_ASSETS2: '0.03',
@@ -49,8 +49,8 @@ const envList = {
   DPLHTY: '385cf53a2efd467e8a2ac_220626',
   jd_wxCartKoi_activityId: '7ccae8e594024b649e36a0740077b2a0',
   M_WX_ADD_CART_URL: 'https://lzkj-isv.isvjcloud.com/wxCollectionActivity/activity2/b252840a3f9a426480f0e0d7df9b3942?activityId=b252840a3f9a426480f0e0d7df9b3942',
-  WXGAME_ACT_ID: '32038e10b143463e901024f86965a6aa',
-  jd_wxFansInterActionActivity_activityId: 'd74bffd991c04a2bb1a3b786074eb31b',
+  WXGAME_ACT_ID: 'fcaa228f86ab4c40a0285b48f9b552ec',
+  jd_wxFansInterActionActivity_activityId: '4fac8319a5684a9e886594b04bd15492',
   jd_wxShopFollowActivity_activityId: '2ba10f47bc4a4ed6b1f8b70d5f28f2d1'
 }
 
