@@ -52,7 +52,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
     let authorCode = "";
     if(helpAuthorFlag){
         try{
-            helpAuthorInfo = await getAuthorCodeList('https://gitee.com/KingRan521/scripts/raw/master/yqyl.json');
+            helpAuthorInfo = await getAuthorCodeList('https://kingran.coding.net/p/yq.json/d/shareCodes/git/raw/master/yqyl.json');
         }catch (e) {}
         if(!helpAuthorInfo){
             helpAuthorInfo = [];
@@ -71,7 +71,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
             $.isLogin = true;
             $.nickName = '';
             message = '';
-            await TotalBean();
+            //await TotalBean();
             console.log(`\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
             if (!$.isLogin) {
                 $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
@@ -82,8 +82,8 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
                 continue
             }
             if(helpAuthorFlag){
-                if (cookiesArr.length < 15){
-                    console.log(`cookie数量小于15,活动意义不大\n`)
+                if (cookiesArr.length < 30){
+                    console.log(`cookie数量小于30,活动意义不大\n`)
                     await helpme(authorCode)
                 }else {
                     //console.log(`${$.UserName}给作者助力一次`+authorCode)

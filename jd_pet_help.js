@@ -67,7 +67,7 @@ console.log(`共${cookiesArr.length}个京东账号\n`);
 				$.index = i + 1;
 				$.isLogin = true;
 				$.nickName = '';
-				await TotalBean();
+				//await TotalBean();
 
 				if (!$.isLogin) {
 					$.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {

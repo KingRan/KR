@@ -64,7 +64,7 @@ if ($.isNode()) {
                 $.isLogin = true;
                 $.nickName = '';
                 $.error = false;
-                await TotalBean();
+                //await TotalBean();
                 console.log(`****开始【京东账号${$.index}】${$.nickName || $.UserName}****`);
                 if (args_xh.except.includes($.UserName)) {
                     console.log(`跳过账号：${$.nickName || $.UserName}`)

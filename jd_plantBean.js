@@ -57,7 +57,7 @@ let lnrun = 0;
       $.index = i + 1;
       $.isLogin = true;
       $.nickName = '';
-      await TotalBean();
+      //await TotalBean();
       console.log(`\n开始【京东账号${$.index}】${$.nickName || $.UserName}\n`);
       if (!$.isLogin) {
         $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
@@ -221,6 +221,7 @@ async function stealFriendWater() {
             }
           }
         }
+				await $.wait(1000)
       }
     }
   } else {
@@ -252,153 +253,158 @@ async function doTask() {
         console.log(`${item.taskName} 任务已完成\n`);
         continue;
       } else {
-        if (item.taskType === 8) {
-          console.log(`\n【${item.taskName}】任务未完成,需自行手动去京东APP完成，${item.desc}营养液\n`)
-        } else {
-          console.log(`\n【${item.taskName}】任务未完成,${item.desc}营养液\n`)
-        }
-      }
-      if (item.dailyTimes === 1 && item.taskType !== 8) {
-        console.log(`\n开始做 ${item.taskName}任务`);
-        // $.receiveNutrientsTaskRes = await receiveNutrientsTask(item.taskType);
-        await receiveNutrientsTask(item.taskType);
-	    	await $.wait(3000);
-        console.log(`做 ${item.taskName}任务结果:${JSON.stringify($.receiveNutrientsTaskRes)}\n`);
-      }
-      if (item.taskType === 3) {
-        //浏览店铺
-        console.log(`开始做 ${item.taskName}任务`);
-        let unFinishedShopNum = item.totalNum - item.gainedNum;
-        if (unFinishedShopNum === 0) {
-          continue
-        }
-        await shopTaskList();
-        const { data } = $.shopTaskListRes;
-        let goodShopListARR = [], moreShopListARR = [], shopList = [];
-        if (!data.goodShopList) {
-          data.goodShopList = [];
-        }
-        if (!data.moreShopList) {
-          data.moreShopList = [];
-        }
-        const { goodShopList, moreShopList } = data;
-        for (let i of goodShopList) {
-          if (i.taskState === '2') {
-            goodShopListARR.push(i);
-          }
-        }
-        for (let j of moreShopList) {
-          if (j.taskState === '2') {
-            moreShopListARR.push(j);
-          }
-        }
-        shopList = goodShopListARR.concat(moreShopListARR);
-        for (let shop of shopList) {
-          const { shopId, shopTaskId } = shop;
-          const body = {
-            "monitor_refer": "plant_shopNutrientsTask",
-            "shopId": shopId,
-            "shopTaskId": shopTaskId
-          }
-          const shopRes = await requestGet('shopNutrientsTask', body);
-          console.log(`shopRes结果:${JSON.stringify(shopRes)}`);
-          if (shopRes && shopRes.code === '0') {
-            if (shopRes.data && shopRes.data.nutrState && shopRes.data.nutrState === '1') {
-              unFinishedShopNum --;
-            }
-          }
-          if (unFinishedShopNum <= 0) {
-            console.log(`${item.taskName}任务已做完\n`)
-            break;
-          }
-        }
-      }
-      if (item.taskType === 5) {
-        //挑选商品
-        console.log(`开始做 ${item.taskName}任务`);
-        let unFinishedProductNum = item.totalNum - item.gainedNum;
-        if (unFinishedProductNum === 0) {
-          continue
-        }
-        await productTaskList();
-        // console.log('productTaskList', $.productTaskList);
-        const { data } = $.productTaskList;
-        let productListARR = [], productList = [];
-        const { productInfoList } = data;
-        for (let i = 0; i < productInfoList.length; i++) {
-          for (let j = 0; j < productInfoList[i].length; j++) {
-            productListARR.push(productInfoList[i][j]);
-          }
-        }
-        for (let i of productListARR) {
-          if (i.taskState === '2') {
-            productList.push(i);
-          }
-        }
-        for (let product of productList) {
-          const { skuId, productTaskId } = product;
-          const body = {
-            "monitor_refer": "plant_productNutrientsTask",
-            "productTaskId": productTaskId,
-            "skuId": skuId
-          }
-          const productRes = await requestGet('productNutrientsTask', body);
-          if (productRes && productRes.code === '0') {
-            // console.log('nutrState', productRes)
-            //这里添加多重判断,有时候会出现活动太火爆的问题,导致nutrState没有
-            if (productRes.data && productRes.data.nutrState && productRes.data.nutrState === '1') {
-              unFinishedProductNum--;
-            }
-          }
-          if (unFinishedProductNum <= 0) {
-            console.log(`${item.taskName}任务已做完\n`)
-            break;
-          }
-        }
-      }
-      if (item.taskType === 10) {
-        //关注频道
-        console.log(`开始做 ${item.taskName}任务`);
-        let unFinishedChannelNum = item.totalNum - item.gainedNum;
-        if (unFinishedChannelNum === 0) {
-          continue
-        }
-        await plantChannelTaskList();
-        const { data } = $.plantChannelTaskList;
-        // console.log('goodShopList', data.goodShopList);
-        // console.log('moreShopList', data.moreShopList);
-        let goodChannelListARR = [], normalChannelListARR = [], channelList = [];
-        const { goodChannelList, normalChannelList } = data;
-        for (let i of goodChannelList) {
-          if (i.taskState === '2') {
-            goodChannelListARR.push(i);
-          }
-        }
-        for (let j of normalChannelList) {
-          if (j.taskState === '2') {
-            normalChannelListARR.push(j);
-          }
-        }
-        channelList = goodChannelListARR.concat(normalChannelListARR);
-        for (let channelItem of channelList) {
-          const { channelId, channelTaskId } = channelItem;
-          const body = {
-            "channelId": channelId,
-            "channelTaskId": channelTaskId
-          }
-          const channelRes = await requestGet('plantChannelNutrientsTask', body);
-          console.log(`channelRes结果:${JSON.stringify(channelRes)}`);
-          if (channelRes && channelRes.code === '0') {
-            if (channelRes.data && channelRes.data.nutrState && channelRes.data.nutrState === '1') {
-              unFinishedChannelNum--;
-            }
-          }
-          if (unFinishedChannelNum <= 0) {
-            console.log(`${item.taskName}任务已做完\n`)
-            break;
-          }
-        }
-      }
+              switch(item.taskType){
+                case 92:
+                         await farmtask();
+                         continue;
+                case 57:
+                         await jxdoublesign1('https://m.jingxi.com/jxbfd/user/DoubleSignDeal?g_ty=h5&g_tk=&appCode=msd1188198&__t=1657108409440&dwEnv=7&strDeviceId=a3b4e844090b28d5c38e7529af8115172079be4d&strZone=jxbfd&bizCode=jxbfd&source=jxbfd&_cfd_t=1657108409190&_stk=__t%2C_cfd_t%2CbizCode%2CdwEnv%2Csource%2CstrDeviceId%2CstrZone&_ste=1&h5st=20220706195330228%3B1980457211661562%3B10032%3Btk02w78551ad830nuMcGB4Qsv9QxapLP7gZdOCYE5PVV%2Bna%2Bb4KU21drJq64oP82965Vdc1tGqVU%2Flp7ydcZ5XgH0Feh%3B241b6f1d21bf8e41f380a5dd29a7bac2a6f1f65a0c7ef1b1f751eaea4c40dd9c%3B3.0%3B1657108410228&sceneval=2');
+                         await $.wait(2000);
+                         await jxdoublesign1('https://wq.jd.com/jxjdsignin/SignedInfo?channel=jx_zdddsq&_t=1658021925021&h5st=20220717093845024%3B5548444396555217%3B0f6ed%3Btk02w9b851b9c18nin7CZjR7vNSlwRexAOGWbYAbl85d9DiQJ1SufW8ZQEQ%2FSygreq626CVRO2gT8DwUUTLBXGyK6wam%3B7eb86560860f8f60ad3b679c34f89aacf891b5a85580efd0a30c355537bfec54%3B3.0%3B1658021925024&_stk=_t%2Cchannel&_=1658021925027&sceneval=2&g_login_type=1&g_ty=ajax&appCode=msc588d6d5');
+                         await $.wait(2000);
+                         await jxdoublesign1('https://wq.jd.com/jxjdsignin/IssueReward?channel=jx_zdddsq&_t=1658021926276&h5st=20220717093846279%3B5548444396555217%3B0f6ed%3Btk02w9b851b9c18nin7CZjR7vNSlwRexAOGWbYAbl85d9DiQJ1SufW8ZQEQ%2FSygreq626CVRO2gT8DwUUTLBXGyK6wam%3Be2d7b6810b3bd1b9d9692d354ecbb582e69afc64df19bd8d6c14632b1a65660c%3B3.0%3B1658021926279&_stk=_t%2Cchannel&sceneval=2&g_login_type=1&g_ty=ajax&appCode=msc588d6d5');
+                         await $.wait(2000);
+                         continue;
+                case 3:
+                         console.log(`开始做 ${item.taskName}任务`);
+                         let unFinishedShopNum = item.totalNum - item.gainedNum;
+                         if (unFinishedShopNum === 0) {
+                           continue
+                         }
+                         await shopTaskList();
+                         const { data } = $.shopTaskListRes;
+                         let goodShopListARR = [],moreShopListARR = [], shopList = [];
+                         const { goodShopList, moreShopList } = data;
+                         if (goodShopList) {
+                             for (let i of goodShopList) {
+                                 if (i.taskState === '2') {
+                                     goodShopListARR.push(i);
+                                 }
+                             }
+                         }
+                          if (moreShopList) {
+                              for (let j of moreShopList) {
+                                  if (j.taskState === '2') {
+                                      moreShopListARR.push(j);
+                                  }
+                              }
+                          }
+                     
+                         shopList = goodShopListARR.concat(moreShopListARR);
+                         for (let shop of shopList) {
+                           const { shopId, shopTaskId } = shop;
+                           const body = {
+                             "monitor_refer": "plant_shopNutrientsTask",
+                             "shopId": shopId,
+                             "shopTaskId": shopTaskId
+                           }
+                           const shopRes = await requestGet('shopNutrientsTask', body);
+                           console.log(`shopRes结果:${JSON.stringify(shopRes)}`);
+                           if (shopRes && shopRes.code === '0') {
+                             if (shopRes.data && shopRes.data.nutrState && shopRes.data.nutrState === '1') {
+                               unFinishedShopNum --;
+                             }
+                           }
+                           if (unFinishedShopNum <= 0) {
+                             console.log(`${item.taskName}任务已做完\n`)
+                             break;
+                           }
+                         }
+                         continue;
+                case 5:
+                         //挑选商品
+                         console.log(`开始做 ${item.taskName}任务`);
+                         let unFinishedProductNum = item.totalNum - item.gainedNum;
+                         if (unFinishedProductNum === 0) {
+                           continue
+                         }
+                         await productTaskList();
+                         // console.log('productTaskList', $.productTaskList);
+                         //const { data1 } = $.productTaskList;
+                         let productListARR = [], productList = [];
+                         const { productInfoList } = $.productTaskList.data;
+                         for (let i = 0; i < productInfoList.length; i++) {
+                           for (let j = 0; j < productInfoList[i].length; j++){
+                             productListARR.push(productInfoList[i][j]);
+                           }
+                         }
+                         for (let i of productListARR) {
+                           if (i.taskState === '2') {
+                             productList.push(i);
+                           }
+                         }
+                         for (let product of productList) {
+                           const { skuId, productTaskId } = product;
+                           const body = {
+                             "monitor_refer": "plant_productNutrientsTask",
+                             "productTaskId": productTaskId,
+                             "skuId": skuId
+                           }
+                           const productRes = await requestGet('productNutrientsTask', body);
+                           if (productRes && productRes.code === '0') {
+                             // console.log('nutrState', productRes)
+                             //这里添加多重判断,有时候会出现活动太火爆的问题,导致nutrState没有
+                             if (productRes.data && productRes.data.nutrState && productRes.data.nutrState === '1') {
+                               unFinishedProductNum --;
+                             }
+                           }
+                           if (unFinishedProductNum <= 0) {
+                             console.log(`${item.taskName}任务已做完\n`)
+                             break;
+                           }
+                         }
+                         continue;
+                case 10:
+                         //关注频道
+                         console.log(`开始做 ${item.taskName}任务`);
+                         let unFinishedChannelNum = item.totalNum - item.gainedNum;
+                         if (unFinishedChannelNum === 0) {
+                           continue
+                         }
+                         await plantChannelTaskList();
+                         //const { data2 } = $.plantChannelTaskList;
+                         // console.log('goodShopList', data.goodShopList);
+                         // console.log('moreShopList', data.moreShopList);
+                         let goodChannelListARR = [], normalChannelListARR = [], channelList = [];
+                         const { goodChannelList, normalChannelList } = $.plantChannelTaskList.data;
+                         for (let i of goodChannelList) {
+                           if (i.taskState === '2') {
+                             goodChannelListARR.push(i);
+                           }
+                         }
+                         for (let j of normalChannelList) {
+                           if (j.taskState === '2') {
+                             normalChannelListARR.push(j);
+                           }
+                         }
+                         channelList = goodChannelListARR.concat(normalChannelListARR);
+                         for (let channelItem of channelList) {
+                           const { channelId, channelTaskId } = channelItem;
+                           const body = {
+                             "channelId": channelId,
+                             "channelTaskId": channelTaskId
+                           }
+                           const channelRes = await requestGet('plantChannelNutrientsTask', body);
+                           console.log(`channelRes结果:${JSON.stringify(channelRes)}`);
+                           if (channelRes && channelRes.code === '0') {
+                             if (channelRes.data && channelRes.data.nutrState && channelRes.data.nutrState === '1') {
+                               unFinishedChannelNum --;
+                             }
+                           }
+                           if (unFinishedChannelNum <= 0) {
+                             console.log(`${item.taskName}任务已做完\n`)
+                             break;
+                           }
+                         }
+                         continue;
+              default:
+                         console.log(`\n开始做 ${item.taskName}任务`);
+                         // $.receiveNutrientsTaskRes = await receiveNutrientsTask(item.taskType);
+                         await receiveNutrientsTask(item.taskType);
+                         console.log(`做 ${item.taskName}任务结果:${JSON.stringify($.receiveNutrientsTaskRes)}\n`);
+                 continue;
+              }
+       }
     }
   }
 }
@@ -428,6 +434,101 @@ function showMsg() {
   }
 }
 // ================================================此处是API=================================
+async function farmtask(){
+  await receivefruit();
+  await $.wait(500);
+  await dofarm('gotConfigDataForBrand');
+  await $.wait(500);
+  await dofarm('initForFarm');
+  await $.wait(500);
+  await dofarm('taskInitForFarm');
+  await $.wait(500);
+  await dofarm('farmMarkStatus');
+  await $.wait(500);
+  await dofarm('initForFarm');
+  await $.wait(500);
+} 
+async function receivefruit(){
+  const body = {
+    "monitor_refer": "plant_receiveNutrientsTask",
+    "monitor_source": "plant_app_plant_index",
+    "awardType": "92",
+    "version": "9.2.4.1"
+}
+await request('receiveNutrientsTask',body)
+}
+async function dofarm(function_id){
+  let body ={
+    "version": 17,
+    "channel": 1,
+    "babelChannel": "45"
+  }
+  if (function_id == 'gotConfigDataForBrand'){
+    body["type"] = "json";
+    body["k"] = "farmShareConfig";
+  }
+  return new Promise(async resolve => {
+    const option = {
+      url: `${JD_API_HOST}?functionId=${function_id}&body=${encodeURIComponent(JSON.stringify(body))}&appid=wh5`,
+      headers: {
+        'Cookie': cookie,
+        'Host': 'api.m.jd.com',
+        'Accept': '*/*',
+        'Connection': 'keep-alive',
+        'User-Agent': 'JD4iPhone/167283 (iPhone;iOS 13.6.1;Scale/3.00)',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Referer': 'https://h5.m.jd.com'
+      },
+      timeout: 20000,
+    };
+    $.get(option, (err, resp, data) => {
+      try {
+        if (err) {
+          console.log('\n API查询请求失败 ‼️‼️')
+          $.logErr(err);
+        } 
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    })
+  })
+
+}
+
+function jxdoublesign1(url){
+  let opt = {
+    url,
+    headers: {
+      //'Host': 'wq.jd.com',
+      'accept':'application/json',
+      'referer': 'https://st.jingxi.com/',
+      'User-Agent': 'jdpingou;iPhone;4.13.0;14.4.2;${randomString(40)};network/wifi;model/iPhone10,2;appBuild/100609;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/1;hasOCPay/0;supportBestPay/0;session/${Math.random * 98 + 1};pap/JA2019_3111789;brand/apple;supportJDSHWK/1;Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
+      'Cookie': 'cid=4;'+cookie
+    }
+  }
+  return new Promise(async resolve => {
+    $.get(opt, (err, resp, data) => {
+      try {
+        if (err) {
+          console.log(`${JSON.stringify(err)}`)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
+        } else {
+          if (data) {
+            //data = JSON.parse(data);
+            //console.log(data)
+          }
+        }
+      } catch (e) {
+        $.logErr(e, resp)
+      } finally {
+        resolve(data);
+      }
+    })
+    resolve()
+  })
+}
 //每轮种豆活动获取结束后,自动收取京豆
 async function getReward() {
   const body = {
@@ -568,7 +669,7 @@ function requireConfig() {
 }
 function requestGet(function_id, body = {}) {
   if (!body.version) {
-    body["version"] = "9.0.0.1";
+    body["version"] = "9.2.4.1";
   }
   body["monitor_source"] = "plant_app_plant_index";
   body["monitor_refer"] = "";
@@ -586,7 +687,7 @@ function requestGet(function_id, body = {}) {
         'Accept-Encoding': 'gzip, deflate, br',
         'Content-Type': "application/x-www-form-urlencoded"
       },
-      timeout: 10000,
+      timeout: 20000,
     };
     $.get(option, (err, resp, data) => {
       try {
@@ -618,7 +719,7 @@ function TotalBean() {
         "Referer": "https://wqs.jd.com/my/jingdou/my.shtml?sceneval=2",
         "User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1")
       },
-      "timeout": 10000,
+      "timeout": 20000,
     }
     $.post(options, (err, resp, data) => {
       try {
@@ -649,7 +750,7 @@ function TotalBean() {
     })
   })
 }
-function request(function_id, body = {}) {
+function request(function_id, body = {}){
   return new Promise(async resolve => {
     await $.wait(5000);
     $.post(taskUrl(function_id, body), (err, resp, data) => {
@@ -658,8 +759,11 @@ function request(function_id, body = {}) {
           console.log('\n种豆得豆: API查询请求失败 ‼️‼️')
           console.log(`function_id:${function_id}`)
           $.logErr(err);
+        } else if (data.indexOf('data') > -1){
+          data = JSON.parse(data);
         } else {
           data = JSON.parse(data);
+          console.log(data.errorMessage)
         }
       } catch (e) {
         $.logErr(e, resp);
@@ -672,21 +776,23 @@ function request(function_id, body = {}) {
 function taskUrl(function_id, body) {
   body["version"] = "9.2.4.1";
   body["monitor_source"] = "plant_app_plant_index";
+  if (!body["monitor_refer"]){
   body["monitor_refer"] = "";
+  }
   return {
     url: JD_API_HOST,
-    body: `functionId=${function_id}&body=${escape(JSON.stringify(body))}&appid=ld&client=apple&area=19_1601_50258_51885&build=167490&clientVersion=9.3.2`,
+    body: `functionId=${function_id}&body=${encodeURIComponent(JSON.stringify(body))}&appid=ld&client=apple&area=19_1601_50258_51885&build=167490&clientVersion=9.3.2`,
     headers: {
       "Cookie": cookie,
-      "Host": "api.m.jd.com",
+      //"Host": "api.m.jd.com",
       "Accept": "*/*",
-      "Connection": "keep-alive",
+      //"Connection": "keep-alive",
       "User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
       "Accept-Language": "zh-Hans-CN;q=1,en-CN;q=0.9",
       "Accept-Encoding": "gzip, deflate, br",
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    timeout: 10000,
+    timeout: 20000,
   }
 }
 function getParam(url, name) {
