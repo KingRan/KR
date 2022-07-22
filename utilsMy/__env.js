@@ -21,7 +21,7 @@ const envList = {
   JOY_COIN_MAXIMIZE: '1',
   dlbtz: true,
   jdPetNotNotifyList: ['lianhua891124', 'jd_45b7686c80a27', '%E9%A6%99%E7%8C%AA%E5%AE%9D'],
-  jdFruitNotNotifyList: [],
+  jdFruitNotNotifyList: ['%E9%A6%99%E7%8C%AA%E5%AE%9D'],
   JD_JOY_PARK_RUN_MSG_TIME: [12, 16, 18, 20, 23],
   JD_JOY_PARK_RUN_ASSETS: '0.01',
   JD_JOY_PARK_RUN_ASSETS2: '0.03',
