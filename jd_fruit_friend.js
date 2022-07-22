@@ -64,7 +64,7 @@ let llgetshare = false;
             $.index = i + 1;
             $.isLogin = true;
             $.nickName = '';
-            await TotalBean();
+            //await TotalBean();
             if (!$.isLogin) {
                 $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
 

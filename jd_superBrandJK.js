@@ -101,7 +101,7 @@ $.flag = false
 async function main(_0x14f2ac){
 	let _0xc6f9d4=decodeURIComponent(_0x14f2ac.match(/pt_pin=(.+?);/)&&_0x14f2ac.match(/pt_pin=(.+?);/)[1]);
 	let _0x43a9de=await takeRequest(_0x14f2ac,'showSecondFloorCardInfo','{"source":"card"}');
-	if(JSON.stringify(_0x43a9de)==='{}'||!_0x43a9de||!_0x43a9de.result||!_0x43a9de.result.activityBaseInfo){
+	if(_0x43a9de.bizCode == 'MP001'){
 		console.log('本期活动结束，等待下期。。。');
         $.flag = true
 		return;

@@ -44,7 +44,7 @@ if($.isNode()){
         $.jdzzNum = 0;
         console.log(`[京东账号${$.index} ${$.UserName}]`)
         await bean();
-        await totalBean();
+        //await totalBean();
         message += `${$.index}：${$.jdName}\n`
         console.log(`${$.index}：${$.jdName}`)
         message += `今日收支：${$.todayIncome}京豆 | ${$.todayExpenditure}京豆\n`
