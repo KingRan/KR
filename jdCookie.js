@@ -11,8 +11,8 @@
 此文件为Node.js专用。其他用户请忽略
  */
 //此处填写京东账号cookie。
-let CookieJDs = [
-]
+const { COOKIES } = require('./utilsMy/const')
+let CookieJDs = Object.values(COOKIES)
 // 判断环境变量里面是否有京东ck
 if (process.env.JD_COOKIE) {
   if (process.env.JD_COOKIE.indexOf('&') > -1) {

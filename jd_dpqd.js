@@ -25,28 +25,25 @@ let vender=''
 let num=0
 let shopname=''
 const token = [
-  "7B5E686A0CAF1C144620A3FFE04AFF1E",
-  "8CD869EFF46D7EAB899C0FB67AEA8D5C",
+  '9958AB926F4070AF8E14B236DD3CB2C0',
+  'E5DA4749F7A04D36FBC4AFCC2D26DD7E',
+  '121F94FFB04D7EC68A0E25079159BADF',
+  'D5FB5AAD1A949E10E2F1A1601E5B630E',
+  '81905C0122018D745D4861262BEB61C7',
+  '443DEC9D35ACB9F0335D7EB8FFD26E1F',
+  '47B91BF8B0B0C12E7A4AF4BCABBB1BC8',
+  '52B71EA2E4961677AF31D4D2085974EB',
+  'B143BEF2AEC6C242A4E514334056A599',
+  'ED26E464FC19DF617081F86F860AFA31',
+  '2E0617200F04BF484B2945B7D855345D',
+  '71137049925B70B5A2F5F8D97A513FD7',
+  'DAFC5474A59492F19EA3ACD69EF1FFE2',
+  '3F10C4DC3801B99CBC297C46C5A897ED',
+  '1DD46671387EAC6FDC14B753E01D5E30',
+  'A92269DC92DDD73CC5EB38B3BACF51E3',
   "3949F55A02AA8A345409AFD9821C861F",
-  "FBBDFE44FCD20A18A7D736DC3F640BCA",
-  "A92269DC92DDD73CC5EB38B3BACF51E3",
-  "94C7B64A6137E339AAA79DC3A6465C1B",
-	"1DD46671387EAC6FDC14B753E01D5E30",
-	"BD0D2682B13A75E0AAF7D8E78844F07C",
-	"662E62C629FB6B20CED938E41A0DC026",
-	"F573A078062F9F18BFCC39080864D7F5",
-  "D7DCB5D6D847EB0167C2B0A180B95F68",
-	"582EA3EA048A3D49961766498A136F9C",
-	"A44D1CA090231A92D24F0B1E5B38BD5A",
-	"67D2D5824D043A5C2EA9C53B900B932C",
-	"2C8CBED431A4A275155387ABDF958427",
-	"833CE1B5158A097598C07D4B2B5B314E",
-	"37D0FAA99892A9E613A1B46E5A55973B",
-	"D35923E942C11178C38BD29E783695B8",
-	"BAA79A7D2FCE5AB8D844A9CA384A7D03",
-	"DB872465EDEB653BB501819F9B9DD326",
-	"532A161D5F27365E3BA5D0BB0A9FB8BA",
-	"BC28601FD2C5B9A5D50038825C842358"
+  "662E62C629FB6B20CED938E41A0DC026",
+  "F573A078062F9F18BFCC39080864D7F5",
 ]
 
 if ($.isNode()) {
@@ -69,6 +66,7 @@ if ($.isNode()) {
     $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
     return;
   }
+  cookiesArr = Array.from(new Set([cookiesArr[20], cookiesArr[21], ...cookiesArr]))
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
@@ -77,7 +75,7 @@ if ($.isNode()) {
       $.isLogin = true;
       $.nickName = '';
       message = '';
-      //await TotalBean();
+      await TotalBean();
       console.log(`\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
       if (!$.isLogin) {
         $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
@@ -142,7 +140,7 @@ function getvenderId(token) {
           data = JSON.parse(/{(.*)}/g.exec(data)[0])
           if (data.code==402) {
             vender=''
-            console.log(`第`+num+`个店铺签到活动已失效`)
+            console.log(`第`+num+`个店铺签到活动已失效`,    token)
             message +=`第`+num+`个店铺签到活动已失效\n`
           }else{
             vender=data.data.venderId

@@ -111,7 +111,7 @@ async function jdFruit() {
             if ($.farmInfo.treeState === 2 || $.farmInfo.treeState === 3) {
                 option['open-url'] = urlSchema;
                 $.msg($.name, ``, `【京东账号${$.index}】${$.nickName || $.UserName}\n【提醒⏰】${$.farmInfo.farmUserPro.name}已可领取\n请去京东APP或微信小程序查看\n点击弹窗即达`, option);
-                if ($.isNode()) {
+                if ($.isNode() && !process.env.jdFruitNotNotifyList.includes($.UserName)) {
                     await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName || $.UserName}水果已可领取`, `【京东账号${$.index}】${$.nickName || $.UserName}\n【提醒⏰】${$.farmInfo.farmUserPro.name}已可领取\n请去京东APP或微信小程序查看`);
                 }
                 return
@@ -264,11 +264,11 @@ async function predictionFruit() {
     let waterEveryDayT = $.farmTask.totalWaterTaskInit.totalWaterTaskTimes; //今天到到目前为止，浇了多少次水
     message += `【今日共浇水】${waterEveryDayT}次\n`;
     message += `【剩余 水滴】${$.farmInfo.farmUserPro.totalEnergy}g💧\n`;
-    message += `【水果🍉进度】${(($.farmInfo.farmUserPro.treeEnergy / $.farmInfo.farmUserPro.treeTotalEnergy) * 100).toFixed(2)}%，已浇水${$.farmInfo.farmUserPro.treeEnergy / 10}次,还需${($.farmInfo.farmUserPro.treeTotalEnergy - $.farmInfo.farmUserPro.treeEnergy) / 10}次\n`
+    message += `【水果🍉进度】已浇水${$.farmInfo.farmUserPro.treeEnergy / 10}次,还需${($.farmInfo.farmUserPro.treeTotalEnergy - $.farmInfo.farmUserPro.treeEnergy) / 10}次\n`
     if ($.farmInfo.toFlowTimes > ($.farmInfo.farmUserPro.treeEnergy / 10)) {
-        message += `【开花进度】再浇水${$.farmInfo.toFlowTimes - $.farmInfo.farmUserPro.treeEnergy / 10}次开花\n`
+        // message += `【开花进度】再浇水${$.farmInfo.toFlowTimes - $.farmInfo.farmUserPro.treeEnergy / 10}次开花\n`
     } else if ($.farmInfo.toFruitTimes > ($.farmInfo.farmUserPro.treeEnergy / 10)) {
-        message += `【结果进度】再浇水${$.farmInfo.toFruitTimes - $.farmInfo.farmUserPro.treeEnergy / 10}次结果\n`
+        // message += `【结果进度】再浇水${$.farmInfo.toFruitTimes - $.farmInfo.farmUserPro.treeEnergy / 10}次结果\n`
     }
     // 预测n天后水果课可兑换功能
     let waterTotalT = ($.farmInfo.farmUserPro.treeTotalEnergy - $.farmInfo.farmUserPro.treeEnergy - $.farmInfo.farmUserPro.totalEnergy) / 10; //一共还需浇多少次水
@@ -320,7 +320,7 @@ async function doTenWater() {
             option['open-url'] = urlSchema;
             $.msg($.name, ``, `【京东账号${$.index}】${$.nickName || $.UserName}\n【提醒⏰】${$.farmInfo.farmUserPro.name}已可领取\n请去京东APP或微信小程序查看\n点击弹窗即达`, option);
             $.done();
-            if ($.isNode()) {
+            if ($.isNode() && !process.env.jdFruitNotNotifyList.includes($.UserName)) {
                 await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName || $.UserName}水果已可领取`, `京东账号${$.index} ${$.nickName || $.UserName}\n${$.farmInfo.farmUserPro.name}已可领取`);
             }
         }
@@ -448,7 +448,7 @@ async function doTenWaterAgain() {
             option['open-url'] = urlSchema;
             $.msg($.name, ``, `【京东账号${$.index}】${$.nickName || $.UserName}\n【提醒⏰】${$.farmInfo.farmUserPro.name}已可领取\n请去京东APP或微信小程序查看\n点击弹窗即达`, option);
             $.done();
-            if ($.isNode()) {
+            if ($.isNode() && !process.env.jdFruitNotNotifyList.includes($.UserName)) {
                 await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName || $.UserName}水果已可领取`, `京东账号${$.index} ${$.nickName || $.UserName}\n${$.farmInfo.farmUserPro.name}已可领取`);
             }
         }
@@ -476,7 +476,7 @@ async function doTenWaterAgain() {
             option['open-url'] = urlSchema;
             $.msg($.name, ``, `【京东账号${$.index}】${$.nickName || $.UserName}\n【提醒⏰】${$.farmInfo.farmUserPro.name}已可领取\n请去京东APP或微信小程序查看\n点击弹窗即达`, option);
             $.done();
-            if ($.isNode()) {
+            if ($.isNode() && !process.env.jdFruitNotNotifyList.includes($.UserName)) {
                 await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName || $.UserName}水果已可领取`, `京东账号${$.index} ${$.nickName || $.UserName}\n${$.farmInfo.farmUserPro.name}已可领取`);
             }
         }
@@ -609,14 +609,14 @@ async function getExtraAward() {
             }
           }
         }
-        message += `【额外奖励】${num}g水领取成功\n`;
+        // message += `【额外奖励】${num}g水领取成功\n`;
       } else if ($.farmAssistResult.status === 3) {
         console.log("已经领取过8好友助力额外奖励");
-        message += `【额外奖励】已被领取过\n`;
+        // message += `【额外奖励】已被领取过\n`;
       }
     } else {
       console.log("助力好友未达到2个");
-      message += `【额外奖励】领取失败,原因：给您助力的人未达2个\n`;
+      // message += `【额外奖励】领取失败,原因：给您助力的人未达2个\n`;
     }
     if ($.farmAssistResult.assistFriendList && $.farmAssistResult.assistFriendList.length > 0) {
       let str = '';
@@ -630,7 +630,7 @@ async function getExtraAward() {
         let time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getMinutes();
         console.log(`\n京东昵称【${item.nickName || "匿名用户"}】 在 ${time} 给您助过力\n`);
       })
-      message += `【助力您的好友】${str}\n`;
+      message += `【助力您的好友】${$.farmAssistResult?.assistFriendList?.length}\n`;
     }
     console.log('领取额外奖励水滴结束\n');
   } else {
@@ -642,15 +642,15 @@ async function getExtraAward() {
           await masterGotFinishedTaskForFarm();
           if ($.masterGotFinished.code === '0') {
             console.log(`已成功领取好友助力奖励：【${$.masterGotFinished.amount}】g水`);
-            message += `【额外奖励】${$.masterGotFinished.amount}g水领取成功\n`;
+            // message += `【额外奖励】${$.masterGotFinished.amount}g水领取成功\n`;
           }
         } else {
           console.log("已经领取过5好友助力额外奖励");
-          message += `【额外奖励】已被领取过\n`;
+          // message += `【额外奖励】已被领取过\n`;
         }
       } else {
         console.log("助力好友未达到5个");
-        message += `【额外奖励】领取失败,原因：给您助力的人未达5个\n`;
+        // message += `【额外奖励】领取失败,原因：给您助力的人未达5个\n`;
         }
         if ($.masterHelpResult.masterHelpPeoples && $.masterHelpResult.masterHelpPeoples.length > 0) {
             let str = '';
@@ -1259,7 +1259,7 @@ function TotalBean() {
                             return
                         }
                         if (data['retcode'] === 0 && data.base && data.base.nickname) {
-                            $.nickName = data.base.nickname;
+                            // $.nickName = data.base.nickname;
                         }
                     } else {
                         console.log(`京东服务器返回空数据`)

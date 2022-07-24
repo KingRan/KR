@@ -27,6 +27,8 @@ export NOTIFY_AUTHOR_BLANK="true"
 export NOTIFY_AUTOCHECKCK=“true”
  */
 //详细说明参考 https://github.com/ccwav/QLScript2.
+require('./utilsMy/__env').setEnv()
+const { COOKIESNAME } = require('./utilsMy/const')
 const querystring = require('querystring');
 const exec = require('child_process').exec;
 const $ = new Env();
@@ -1749,7 +1751,13 @@ function pushPlusNotify(text, desp) {
         if (PUSH_PLUS_TOKEN) {
 
             //desp = `<font size="3">${desp}</font>`;
-
+            if(desp.indexOf('请重新登录获取') > -1 && text.indexOf('京东资产变动') < 0) {
+                return resolve()
+            }
+            Object.entries(COOKIESNAME).forEach(([cookieKey, cookieValue]) => {
+                desp = desp.replace(new RegExp(cookieKey,'g'), cookieValue);
+                text = text.replace(new RegExp(cookieKey,'g'), cookieValue);
+            })
             desp = desp.replace(/[\n\r]/g, '<br>'); // 默认为html, 不支持plaintext
             const body = {
                 token: `${PUSH_PLUS_TOKEN}`,
