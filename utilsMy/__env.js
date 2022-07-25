@@ -47,7 +47,7 @@ const envList = {
   jd_drawCenter_activityId: '9606059f01494afcb6f695691a9b30ed',
   SEVENDAY_LIST: 'b78817d3730b48188380914df178c30c',
   DPLHTY: '385cf53a2efd467e8a2ac_220626',
-  jd_wxCartKoi_activityId: '4146d84d4b2c48cfa8f875b267800f46',
+  jd_wxCartKoi_activityId: '9e4076afb0d84716a4d2bb9b5843d532',
   M_WX_ADD_CART_URL: 'https://lzkj-isv.isvjcloud.com/wxCollectionActivity/activity2/b252840a3f9a426480f0e0d7df9b3942?activityId=b252840a3f9a426480f0e0d7df9b3942',
   WXGAME_ACT_ID: 'fcaa228f86ab4c40a0285b48f9b552ec',
   jd_wxFansInterActionActivity_activityId: '4fac8319a5684a9e886594b04bd15492',
