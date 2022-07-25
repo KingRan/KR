@@ -45,7 +45,7 @@ const COOKIES = {
     'feifei--13611709282--317223': 'pt_key=AAJi14IuADAG4UacxyReR3VsXHcUOStg1sitnBXZUlqyHCDDP_jZt04kSMWyFkoppRpG8KSmlCc; pt_pin=%E9%9A%8F%E9%A3%8E%E8%BF%9C%E7%A8%8B;',
     'feifei2--13501602524--317238': 'pt_key=AAJi14LqADBjqiIDNi7Zkg1oI32EeckB3uh6SDrmxtmHj0tooXAksO0ue7oPOnlIbyNcSNBadV0; pt_pin=jd_73650adb20cc8;',
     'zhoulei--15900507586--427156': 'pt_key=AAJi2PN5ADCahw5pSu0bFFijafLtaUC7-oTb5JXh7CKhvKcGBUY5HC7ZkR9nY50D0LuIJhFRBrA; pt_pin=wszl1987;',
-    // 'lianhua--13918737840--323573': 'pt_key=AAJitswDADAjJLyJd3UccdYS1o4aXtofC7J8wTYXF0nxgJyS8aP7KYOtrfhWkmKtUbBJHW-Rd_Y; pt_pin=lianhua891124;',
+    'lianhua--13918737840--323573': 'pt_key=AAJi3pGlADA7A9XMET8IHPnYT_LPAhHj02MOh8QLgYdOIi2KsUcY5SzrA_SzM8n2DzSbmOiMxKw; pt_pin=lianhua891124;',
     'xiaoshi--15601879183--32642X': 'pt_key=AAJi1hsrADBnrB9OnOJmZ89rDu5yt9JO0txukAGQhGePCxsFW_oAPg--TUr0Rcaxe3LJaT6loa4; pt_pin=flute23on;',
     'yizhou2--13817965380--31504X': 'pt_key=AAJi2PRnADBya9Nii5rnk2lKPRcWSelNAChLUfyQKvySHJ06eyqSejutKuCW_Vj0gg6mZGjr9xI; pt_pin=%E9%A6%99%E7%8C%AA%E5%AE%9D;',
     'songfan3--15800664336--420667': 'pt_key=AAJi1A6QADDprmqwmXg9KPz-BXVoDhfhGZiJkQXZcJeTpgcQ1atlajvFkwTqgE1tsKN7_VEJgI4; pt_pin=jd_58b8a58a68265;',
