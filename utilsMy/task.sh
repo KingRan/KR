@@ -43,16 +43,6 @@
 5 9 * * * /usr/local/bin/node /home/data/KR/jd_my_cfd_help.js
 30 0-23/4 * * * /usr/local/bin/node /home/data/KR/jd_my_cfd_loop.js
 
-# 微信
-
-# 活动
-20 11 * * * /usr/local/bin/node /home/data/KR/jd_zdjr.js
-5 10 * * * /usr/local/bin/node /home/data/KR/jd_wxSecond.js
-5 10 * * * /usr/local/bin/node /home/data/KR/jd_wxCollectCard.js
-18 20 * * * /usr/local/bin/node /home/data/KR/jd_teamMN.js
-20 4,16 * * * /usr/local/bin/node /home/data/KR/jd_carplay.js
-
-
 
 # 京东
 11 1,20 * * * /usr/local/bin/node /home/data/KR/jd_cash_windfg.js
@@ -86,15 +76,14 @@
 25 0,23 * * * /usr/local/bin/node /home/data/KR/jd_price.js >> /home/data/logs/jd_script_node/jd_price.log 2>&1
 20 2-21/2 * * * /usr/local/bin/node /home/data/KR/jd_plantBean.js
 5 2,18 * * * /usr/local/bin/node /home/data/KR/jd_plantBean_help.js
-10 3,6-18/6 * * * /usr/local/bin/node /home/data/KR/jd_pet.js
-7 4,15 * * * /usr/local/bin/node /home/data/KR/jd_pet_help.js
+10 6-18/6 * * * /usr/local/bin/node /home/data/KR/jd_pet.js
+7 2,15 * * * /usr/local/bin/node /home/data/KR/jd_pet_help.js
 10 0 * * * /usr/local/bin/node /home/data/KR/jd_kd.js
 7 11 * * * /usr/local/bin/node /home/data/KR/jd_live.js
 10 0 * * * /usr/local/bin/node /home/data/KR/jd_jin_tie.js
 40 0,21 * * * /usr/local/bin/node /home/data/KR/jd_jdzz.js
 30 6 * * * /usr/local/bin/node /home/data/KR/jd_goodMorning.js
 #2 0,11 * * * /usr/local/bin/node /home/data/KR/jd_desire.js
-40 1 * * * /usr/local/bin/node /home/data/KR/jd_ry.js
 13 1,22 * * * /usr/local/bin/node /home/data/KR/jd_gold_creator.js
 10 3 * * * /usr/local/bin/node /home/data/KR/jd_shop.js
 13 1,6,22 * * * /usr/local/bin/node /home/data/KR/jd_health.js
