@@ -1,8 +1,8 @@
 55 23 * * * /sbin/reboot
 
 50 23 * * * find /home/data/logs/jd_script_node -name '*.log' | grep -v 'jd_get_share_code.log' | xargs rm -rf
-52 23 * * * find /home/data/KR -name 'Fruit_ShareCache.json' | xargs rm -rf
-52 23 * * * find /root -name 'Fruit_ShareCache.json' | xargs rm -rf
+#52 23 * * * find /home/data/KR -name 'Fruit_ShareCache.json' | xargs rm -rf
+#52 23 * * * find /root -name 'Fruit_ShareCache.json' | xargs rm -rf
 
 # jdhelloworld
 #4 0,18 * * * /usr/local/bin/node /home/data/jd_scripts/jd_wechat_sign.js >> /home/data/logs/jd_script_node/jd_wechat_sign.log 2>&1
@@ -60,7 +60,7 @@
 3 1,21 * * * /usr/local/bin/node /home/data/KR/jd_fan.js
 10 1,16 * * * /usr/local/bin/node /home/data/KR/jd_fruit_help.js
 10 10,15 * * * /usr/local/bin/node /home/data/KR/jd_fruit_friend.js
-5 6-18/6 * * * /usr/local/bin/node /home/data/KR/jd_fruit_task.js
+5 5-18/6 * * * /usr/local/bin/node /home/data/KR/jd_fruit_task.js
 10 0,6-23 * * * /usr/local/bin/node /home/data/KR/jd_my_dreamFactory.js
 3 1,11 * * * /usr/local/bin/node /home/data/KR/jd_m_sign.js
 2 6 * * 5 /usr/local/bin/node /home/data/KR/jd_xs_zzl.js
