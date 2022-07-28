@@ -64,7 +64,7 @@
 3 1,21 * * * /usr/local/bin/node /home/data/KR/jd_fan.js
 10 1,16 * * * /usr/local/bin/node /home/data/KR/jd_fruit_help.js
 10 10,15 * * * /usr/local/bin/node /home/data/KR/jd_fruit_friend.js
-5 5-18/6 * * * /usr/local/bin/node /home/data/KR/jd_fruit_task.js
+5 5-18/6 * * * /usr/local/bin/node /home/data/KR/jd_fruit_task.js >> /home/data/logs/jd_script_node/jd_fruit_task.log 2>&1
 10 0,6-23 * * * /usr/local/bin/node /home/data/KR/jd_my_dreamFactory.js
 3 1,11 * * * /usr/local/bin/node /home/data/KR/jd_m_sign.js
 2 6 * * 5 /usr/local/bin/node /home/data/KR/jd_xs_zzl.js
