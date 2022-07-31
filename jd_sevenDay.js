@@ -220,12 +220,12 @@ function task(function_id, body, isCommon = 0) {
                                     if(data){
                                         // console.log(data);
                                         if (data.isOk) {
-                                            console.log("签到成功");
-                                            if (data.signResult && data.signResult.gift) {
-                                                console.log(data.signResult.gift.giftName);
+                                            console.log("结果 -> 签到成功");
+                                            if (data.signResult.gift != null) {
+                                                console.log("🎉 获得奖品：" + data.signResult.gift.giftName);
                                             }
                                         } else {
-                                            console.log(data.msg);
+                                            console.log("结果 -> " + data.msg);
                                         }
                                     }
                                     break
@@ -233,12 +233,12 @@ function task(function_id, body, isCommon = 0) {
                                     if(data){
                                         // console.log(data);
                                         if (data.isOk) {
-                                            console.log("签到成功");
-                                            if (data.gift.giftName && data.signResult.gift) {
-                                                console.log(data.gift.giftName);
+                                            console.log("结果 -> 签到成功");
+                                            if (data.gift != null) {
+                                                console.log("🎉 获得奖品：" + data.gift.giftName);
                                             }
                                         } else {
-                                            console.log(data.msg);
+                                            console.log("结果 -> " + data.msg);
                                         }
                                     }
                                     break
@@ -288,24 +288,24 @@ function task2(function_id, body, isCommon = 0) {
                                 case 'sign/sevenDay/wx/signUp':
                                     if(data){
                                         if (data.isOk) {
-                                            console.log("签到成功");
-                                            if (data.signResult.giftName) {
-                                                console.log(data.signResult.giftName);
+                                            console.log("结果 -> 签到成功");
+                                            if (data.signResult.gift != null) {
+                                                console.log("🎉 获得奖品：" + data.signResult.gift.giftName);
                                             }
                                         } else {
-                                            console.log(data.msg);
+                                            console.log("结果 -> " + data.msg);
                                         }
                                     }
                                     break
                                 case 'sign/wx/signUp':
                                     if(data){
                                         if (data.isOk) {
-                                            console.log("签到成功");
-                                            if (data.gift.giftName) {
-                                                console.log(data.gift.giftName);
+                                            console.log("结果 -> 签到成功");
+                                            if (data.gift != null) {
+                                                console.log("🎉 获得奖品：" + data.gift.giftName);
                                             }
                                         } else {
-                                            console.log(data.msg);
+                                            console.log("结果 -> " + data.msg);
                                         }
                                     }
                                     break
@@ -401,7 +401,7 @@ function getMyPing() {
                     if (data) {
                         data = JSON.parse(data)
                         if (data.result) {
-                            $.log(`你好：${data.data.nickname}`)
+                            //$.log(`你好：${data.data.nickname}`)
                             $.pin = data.data.nickname;
                             $.secretPin = data.data.secretPin;
                         } else {
@@ -456,7 +456,7 @@ function getMyPing2() {
                     if (data) {
                         data = JSON.parse(data)
                         if (data.result) {
-                            $.log(`你好：${data.data.nickname}`)
+                            //$.log(`你好：${data.data.nickname}`)
                             $.pin = data.data.nickname;
                             $.secretPin = data.data.secretPin;
                         } else {
