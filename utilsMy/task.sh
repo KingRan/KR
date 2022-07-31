@@ -21,7 +21,6 @@
 18 9 * * * /usr/local/bin/node /home/data/KR/jd_teamXAY.js
 
 
-30 10 * * * /usr/local/bin/node /home/data/KR/jd_yiliBaby.js
 10 10 * * * /usr/local/bin/node /home/data/KR/jd_shangou.js
 33 6 7-31 7 * /usr/local/bin/node /home/data/KR/jd_lanyueliang.js
 
