@@ -26,14 +26,13 @@
 
 
 # 极速版
-#5 0 * * * /usr/local/bin/node /home/data/faker3/jd_joy_park_task.js
 20 0,19 * * * /usr/local/bin/node /home/data/KR/jd_js_sign.js
 0 7 * * * /usr/local/bin/node /home/data/KR/jd_zjb.js
 45 0 * * * /usr/local/bin/node /home/data/KR/jd_yqyl.js
 30 0-23/3 * * * /usr/local/bin/node /home/data/KR/jd_wsdlb.js
 0 1 * * * /usr/local/bin/node /home/data/KR/jd_tyt.js
 #3 0,19 * * * /usr/local/bin/node /home/data/KR/jd_speed_redpocke.js
-11 23 * * * /usr/local/bin/node /home/data/KR/jd_joy_park_task.js
+#11 23 * * * /usr/local/bin/node /home/data/KR/jd_joy_park_task.js
 
 
 # 京喜
