@@ -53,7 +53,7 @@ const turnTableId = [
       $.UUID = getUUID('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
       getUA()
       await signRun()
-	  await $.wait(8000)
+			await $.wait(8000)
       const UTC8 = new Date().getTime() + new Date().getTimezoneOffset() * 60000 + 28800000;
       $.beanSignTime = new Date(UTC8).toLocaleString('zh', { hour12: false });
       let msg = `【京东账号${$.index}】${$.nickName || $.UserName}\n【签到时间】:  ${$.beanSignTime}\n【签到概览】:  成功${successNum}个, 失败${errorNum}个\n${beanNum > 0 && "【签到奖励】:  " + beanNum + "京豆" || ""}\n`

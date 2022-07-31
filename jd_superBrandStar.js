@@ -40,8 +40,12 @@ if ($.isNode()) {
             }
             continue
         }
-        await main();
-        //if (i == 0 && $.flag) return;
+        try {
+            await main();
+        }catch (e) {
+            console.log(`好像账号黑号~~~`);
+        }
+        if ($.flag) return;
     }
 
 })().catch((e) => { $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '') }).finally(() => { $.done(); })
