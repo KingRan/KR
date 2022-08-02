@@ -17,7 +17,7 @@
 
 
 
-30 9 * 7 * /usr/local/bin/node /home/data/KR/jd_daily_lottery.js
+#30 9 * 7 * /usr/local/bin/node /home/data/KR/jd_daily_lottery.js
 18 9 * * * /usr/local/bin/node /home/data/KR/jd_teamXAY.js
 
 
