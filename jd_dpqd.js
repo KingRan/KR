@@ -25,13 +25,26 @@ let vender=''
 let num=0
 let shopname=''
 const token = [
-  'AB549463C778127E4A3EA0F9AE447F43',
-  'CC8AB17E5EDC1E6791D64AB83567525A',
-  'A1A4256C6ACF1791CC43BFB24F578AE0',
-  '7B5E686A0CAF1C144620A3FFE04AFF1E',
-  '6334C52448DD6997D6D523A624DB1E23',
-  '56E84F7F1ED88B70DFF8C4B2097BCDCF',
-  'E0087463F85940305DCA705308208EBB',
+  "7B5E686A0CAF1C144620A3FFE04AFF1E",
+  "F0A7971BFC6A5C12B06A45080B6C04CF",
+  "A1577946DE409D3AC4B4FDCFF4681625",
+  "E0087463F85940305DCA705308208EBB",
+  "773D63918C47D32F33DDB2FB78C5820A",
+  "0D42F0A3359FBC13F816F22201F91EE6",
+	"FCE9F2E4FB075C3A2CBDF6C27F972B03",
+	"B60ECB73A9E19C9DC9097EC589C731A0",
+	"C1B3B8D4BBE96E6A3EF0C12F27F868D3",
+  "04CC7B1B2CBB41F9B38D0E2EAF5A9FA6",
+	"CC8AB17E5EDC1E6791D64AB83567525A",
+	"A6D7A29DB6C46B7D3F7CD6EC3AE110C6",
+	"F9E7DBB640BB2094C6A7755066DCE5CA",
+	"30D17316E31067004ED239DE9F121B0D",
+	"036CE87FFD9B0EFA470239B8BD857C8F",
+	"D35923E942C11178C38BD29E783695B8",
+	"1CC00BE22F9AE64294D7EC1839962E19",
+	"AB549463C778127E4A3EA0F9AE447F43",
+	"500B9537712BD828EFC8C4D036B9752A",
+	"D082916926793D99220819F05914C94F"
 ]
 
 if ($.isNode()) {
@@ -54,7 +67,6 @@ if ($.isNode()) {
     $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
     return;
   }
-  cookiesArr = Array.from(new Set([cookiesArr[20], cookiesArr[21], ...cookiesArr]))
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
@@ -63,7 +75,7 @@ if ($.isNode()) {
       $.isLogin = true;
       $.nickName = '';
       message = '';
-      await TotalBean();
+      //await TotalBean();
       console.log(`\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
       if (!$.isLogin) {
         $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
@@ -128,7 +140,7 @@ function getvenderId(token) {
           data = JSON.parse(/{(.*)}/g.exec(data)[0])
           if (data.code==402) {
             vender=''
-            console.log(`第`+num+`个店铺签到活动已失效`,    token)
+            console.log(`第`+num+`个店铺签到活动已失效`)
             message +=`第`+num+`个店铺签到活动已失效\n`
           }else{
             vender=data.data.venderId
